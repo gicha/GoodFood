@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "779012079338",
+    "firebase_url": "https://goodfood-257019.firebaseio.com",
+    "project_id": "goodfood-257019",
+    "storage_bucket": "goodfood-257019.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:779012079338:android:68885c4219ddfdf974e193",
+        "android_client_info": {
+          "package_name": "team.itis.goodfood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "779012079338-34rbmsdjrbd6i971i1birdu0nseteppf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2jytHGLo_QTTqC-a01qLaL6sXuS8-bmI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "779012079338-34rbmsdjrbd6i971i1birdu0nseteppf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
