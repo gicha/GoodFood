@@ -8,28 +8,14 @@ class NoWishesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height - 140,
+      padding: EdgeInsets.only(top: 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Text(
-            "Nothing is added\nto your wishlist yet\n:(",
+            "Here you can add\n your wishlist\n:)",
             textAlign: TextAlign.center,
             style: ITTextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: ITColors.text),
-          ),
-          SizedBox(height: MediaQuery.of(context).size.height * .07),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(width: MediaQuery.of(context).size.width * .1),
-              Image.asset(
-                "assets/images/yellow_human.png",
-                height: MediaQuery.of(context).size.height * .5,
-                width: MediaQuery.of(context).size.width * .7,
-              ),
-            ],
           ),
         ],
       ),

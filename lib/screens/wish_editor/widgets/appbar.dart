@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goodfood/blocs/blocs.dart';
 import 'package:goodfood/res/res.dart';
 import 'package:goodfood/res/text_style.dart';
 
@@ -20,7 +22,16 @@ class WishAppBarWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           GestureDetector(
-            onTap: () => Navigator.pop(context),
+            onTap: () {
+              DialogBloc.getInstance().dispatch(
+                OpenDialogEvent(
+                    confirm: () {
+                      WishBloc.getInstance().dispatch(ClearWishEvent());
+                      Navigator.pop(context);
+                    },
+                    text: "Return?"),
+              );
+            },
             child: Container(
               padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * .05),
               child: Text(
@@ -29,18 +40,30 @@ class WishAppBarWidget extends StatelessWidget {
               ),
             ),
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Container(
-              padding: EdgeInsets.only(right: MediaQuery.of(context).size.width * .05),
-              child: Text(
-                "save",
-                style: ITTextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
+          BlocBuilder(
+              bloc: WishBloc.getInstance(),
+              builder: (context, WishState state) {
+                return GestureDetector(
+                  onTap: () {
+                    WishBloc.getInstance().dispatch(ConfirmWishEvent());
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    padding: EdgeInsets.only(right: MediaQuery.of(context).size.width * .05),
+                    child: state.loadStatus == LoadStatus.loading
+                        ? Container(
+                            padding: EdgeInsets.all(8),
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(ITColors.primary),
+                            ),
+                          )
+                        : Text(
+                            "save",
+                            style: ITTextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                  ),
+                );
+              }),
         ],
       ),
     );

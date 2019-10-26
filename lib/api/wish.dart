@@ -10,6 +10,14 @@ class WishApi {
   }
 
   static Future<void> delete(id) async {
-    await Api.dio.get("/wish_delete/$id/").then((res) {}, onError: (e) {});
+    await Api.dio.get("/wish_delete/$id/").then((res) {}, onError: (e) {
+      print(e);
+    });
+  }
+
+  static Future<void> add(String name, String count) async {
+    await Api.dio.get("/add_wish/$name/${count.toString()}/").then((res) {}, onError: (e) {
+      print(e);
+    });
   }
 }

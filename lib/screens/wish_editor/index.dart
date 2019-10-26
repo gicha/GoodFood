@@ -11,7 +11,7 @@ class WishEditorScreen extends StatefulWidget {
   _WishEditorScreenState createState() => _WishEditorScreenState();
 }
 
-class _WishEditorScreenState extends State<WishEditorScreen> {
+class _WishEditorScreenState extends State<WishEditorScreen> with AutomaticKeepAliveClientMixin {
   // blocs
   WishBloc wishBloc;
   //other
@@ -27,6 +27,10 @@ class _WishEditorScreenState extends State<WishEditorScreen> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return WishEditorView(provider: provider);
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

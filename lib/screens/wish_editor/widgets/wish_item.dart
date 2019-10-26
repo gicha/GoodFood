@@ -1,51 +1,71 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:goodfood/api/api.dart';
 import 'package:goodfood/blocs/blocs.dart';
-import 'package:goodfood/models/models.dart';
 import 'package:goodfood/res/res.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:goodfood/res/text_style.dart';
-import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 
 class WishItemWidget extends StatelessWidget {
-  const WishItemWidget({Key key, @required this.wish}) : super(key: key);
-  final Wish wish;
+  const WishItemWidget({Key key, @required this.page}) : super(key: key);
+  final int page;
 
   @override
   Widget build(BuildContext context) {
     return Slidable(
       actionPane: SlidableStrechActionPane(),
       actionExtentRatio: 0.25,
-      child: Container(
-        padding: EdgeInsets.only(top: 30, left: 30, right: 15, bottom: 30),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(wish.category,
-                    style: ITTextStyle(fontWeight: FontWeight.bold, color: ITColors.text, fontSize: 16)),
-                SizedBox(height: 10),
-                Text('${wish.needCount.floor().toString()} pcs.',
-                    style: ITTextStyle(color: ITColors.text, fontSize: 14)),
-              ],
-            ),
-            // Expanded(child: Container()),
-            Container(
-              height: 35,
-              width: MediaQuery.of(context).size.width * .45,
-              child: FAProgressBar(
-                currentValue: ((wish.existCount / wish.needCount * 100) ?? 0).floor().clamp(20, 100),
-                direction: Axis.horizontal,
-                progressColor: ITColors.primary,
-                backgroundColor: ITColors.bg,
-                borderRadius: 45,
-                animatedDuration: Duration(milliseconds: 0),
+      child: Card(
+        color: Colors.white,
+        elevation: 3,
+        margin: EdgeInsets.all(10),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+          child: Form(
+            onWillPop: () async {
+              return true;
+            },
+            child: FormBuilder(
+              onWillPop: () async => true,
+              onChanged: (input) {
+                print([input["name"], input["count"].toString()]);
+                WishBloc.getInstance().dispatch(EditWishEvent(page, input["name"], input["count"]));
+              },
+              autovalidate: true,
+              child: Column(
+                children: <Widget>[
+                  FormBuilderTextField(
+                    attribute: "name",
+                    decoration: InputDecoration(
+                      labelText: "Product Name",
+                      hintText: "Input your wish here",
+                      border: InputBorder.none,
+                      labelStyle: ITTextStyle(fontSize: 22),
+                    ),
+                    maxLines: 1,
+                    style: ITTextStyle(fontSize: 20),
+                    validators: [FormBuilderValidators.required()],
+                  ),
+                  FormBuilderTextField(
+                    attribute: "count",
+                    decoration: InputDecoration(
+                      labelText: "Amount",
+                      hintText: "Input number",
+                      border: InputBorder.none,
+                      labelStyle: ITTextStyle(fontSize: 22),
+                    ),
+                    maxLines: 1,
+                    keyboardType: TextInputType.number,
+                    style: ITTextStyle(fontSize: 20),
+                    validators: [
+                      FormBuilderValidators.numeric(),
+                      FormBuilderValidators.max(100),
+                      FormBuilderValidators.min(1),
+                    ],
+                  ),
+                ],
               ),
             ),
-          ],
+          ),
         ),
       ),
       secondaryActions: <Widget>[
@@ -54,10 +74,7 @@ class WishItemWidget extends StatelessWidget {
           color: ITColors.red,
           icon: Icons.delete,
           closeOnTap: false,
-          onTap: () async {
-            await WishApi.delete(wish.id);
-            WishBloc.getInstance().dispatch(FetchWishEvent());
-          },
+          onTap: () => WishBloc.getInstance().dispatch(DeleteWishEvent(page)),
         ),
       ],
     );
