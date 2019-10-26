@@ -54,3 +54,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/map/style.txt
+    - assets/animations/loading.flr
+    - assets/animations/okay.flr
