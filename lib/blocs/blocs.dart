@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:goodfood/models/models.dart';
 import 'package:goodfood/models/serializers.dart';
 import 'package:flutter/foundation.dart';
@@ -24,3 +25,4 @@ part './dialog.dart';
 part './self.dart';
 part './shop.dart';
 part './wish.dart';
+part './order.dart';

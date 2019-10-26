@@ -7,18 +7,13 @@ import 'package:dio/dio.dart';
 import 'package:goodfood/blocs/blocs.dart';
 import 'package:goodfood/utils/config.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../models/serializers.dart';
 import '../models/models.dart';
 
 part './shop.dart';
 part './wish.dart';
-// part './user.dart';
-// part './auth.dart';
-// part './session.dart';
-// part './public.dart';
+part './order.dart';
 
 /// base Api class
 /// Before using Api you must to:
@@ -57,8 +52,8 @@ class LogInterceptor extends Interceptor {
 
   @override
   onRequest(RequestOptions options) async {
-    print("*** Request ***");
-    print("${options.method} ${options.uri} ?${options.queryParameters} B${options.data} H${options.headers}");
+    // print("*** Request ***");
+    // print("${options.method} ${options.uri} ?${options.queryParameters} B${options.data} H${options.headers}");
   }
 
   @override
@@ -74,8 +69,8 @@ class LogInterceptor extends Interceptor {
 
   @override
   onResponse(Response response) async {
-    print("*** Response ***");
-    printAll(response.toString());
+    // print("*** Response ***");
+    // printAll(response.toString());
   }
 
   printAll(msg) {

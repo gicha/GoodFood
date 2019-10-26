@@ -68,19 +68,19 @@ class WishBloc extends Bloc<WishEvent, WishState> {
       yield currentState.copyWith(wishes: wishes, loadStatus: LoadStatus.loaded);
     }
     if (event is AddWishEvent) {
-      var newDishes = currentState.newWishes;
-      newDishes.add({"name": "", "count": 0});
-      yield currentState.copyWith(newWishes: newDishes);
+      var newWishes = currentState.newWishes;
+      newWishes.add({"name": "", "count": 0});
+      yield currentState.copyWith(newWishes: newWishes);
     }
     if (event is EditWishEvent) {
-      var newDishes = currentState.newWishes;
-      newDishes[event.index] = {"name": event.name, "count": event.count};
-      yield currentState.copyWith(newWishes: newDishes);
+      var newWishes = currentState.newWishes;
+      newWishes[event.index] = {"name": event.name, "count": event.count};
+      yield currentState.copyWith(newWishes: newWishes);
     }
     if (event is DeleteWishEvent) {
-      var newDishes = currentState.newWishes;
-      newDishes.removeAt(event.index);
-      yield currentState.copyWith(newWishes: newDishes);
+      var newWishes = currentState.newWishes;
+      newWishes.removeAt(event.index);
+      yield currentState.copyWith(newWishes: newWishes);
     }
     if (event is ConfirmWishEvent) {
       yield currentState.copyWith(loadStatus: LoadStatus.loading);

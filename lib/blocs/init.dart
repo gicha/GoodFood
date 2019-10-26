@@ -29,8 +29,9 @@ class InitBloc extends Bloc<InitEvent, InitState> {
         debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
       await init();
       WishBloc.getInstance().dispatch(FetchWishEvent());
+      fcm();
       // rootBundle.loadString('assets/map/style.txt');
-      sleep(const Duration(seconds: 1));
+      sleep(const Duration(seconds: 1, milliseconds: 500));
       yield InitState.noUser;
     }
     if (event is ForceInitEvent) yield InitState.inited;
@@ -40,5 +41,25 @@ class InitBloc extends Bloc<InitEvent, InitState> {
     await DataBase().open();
     initializeDateFormatting();
     Api.init();
+  }
+
+  fcm() async {
+    final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+    _firebaseMessaging.configure(
+      onMessage: (Map<String, dynamic> message) async {
+        print("onMessage: $message");
+        WishBloc.getInstance().dispatch(FetchWishEvent());
+      },
+      onLaunch: (Map<String, dynamic> message) async {
+        print("onLaunch: $message");
+        WishBloc.getInstance().dispatch(FetchWishEvent());
+      },
+      onResume: (Map<String, dynamic> message) async {
+        print("onResume: $message");
+        WishBloc.getInstance().dispatch(FetchWishEvent());
+      },
+    );
+    String token = await _firebaseMessaging.getToken();
+    print("fcmToken: $token");
   }
 }
