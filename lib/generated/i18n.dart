@@ -101,10 +101,10 @@ class I18n implements WidgetsLocalizations {
   String get close => "закрыть";
   /// "от вас"
   String get fromYou => "от вас";
-  /// "m"
-  String get metres => "m";
-  /// "km"
-  String get kilometres => "km";
+  /// "м"
+  String get metres => "м";
+  /// "км"
+  String get kilometres => "км";
 }
 
 class _I18n_ru_RU extends I18n {
@@ -210,9 +210,9 @@ class _I18n_en_US extends I18n {
   /// "закрыть"
   @override
   String get close => "закрыть";
-  /// "от вас"
+  /// "from you"
   @override
-  String get fromYou => "от вас";
+  String get fromYou => "from you";
   /// "m"
   @override
   String get metres => "m";

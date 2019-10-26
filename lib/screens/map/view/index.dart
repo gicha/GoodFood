@@ -5,6 +5,7 @@ import 'package:goodfood/res/res.dart';
 import 'package:goodfood/screens/map/provider.dart';
 import 'package:goodfood/screens/map/widgets/find_line.dart';
 import 'package:goodfood/screens/map/widgets/location.dart';
+import 'package:goodfood/screens/map/widgets/product.dart';
 import 'package:goodfood/screens/map/widgets/shop_info.dart';
 import 'package:goodfood/widgets/loading.dart';
 import 'package:goodfood/widgets/map.dart';
@@ -71,14 +72,17 @@ class _MapViewState extends State<MapView> {
                       Divider(
                         height: 2,
                       ),
-                      // Container(
-                      //   height: height - 410,
-                      //   child: InstructionView(
-                      //     types: state.shopToPreview.boxes.map((Box box) {
-                      //       return box.type;
-                      //     }).toList(),
-                      //   ),
-                      // ),
+                      Container(
+                        height: height - 330,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: List.generate(
+                              state.shopToPreview.products?.length ?? 0,
+                              (index) => ProductWidget(product: state.shopToPreview.products[index]),
+                            ),
+                          ),
+                        ),
+                      ),
                     ] else
                       Container(
                         height: 180,
