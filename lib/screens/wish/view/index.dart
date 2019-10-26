@@ -3,6 +3,7 @@ import 'package:goodfood/blocs/blocs.dart';
 import 'package:goodfood/models/models.dart';
 import 'package:goodfood/res/res.dart';
 import 'package:goodfood/screens/wish/provider.dart';
+import 'package:goodfood/screens/wish/widgets/appbar.dart';
 import 'package:goodfood/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +31,11 @@ class _WishViewState extends State<WishView> {
         child: BlocBuilder(
           bloc: wishBloc,
           builder: (context, WishState state) {
-            return Container(width: width, child: Container());
+            return Column(
+              children: <Widget>[
+                WishAppBarWidget(),
+              ],
+            );
           },
         ),
       ),
