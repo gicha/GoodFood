@@ -4,6 +4,7 @@ import 'package:goodfood/models/models.dart';
 import 'package:goodfood/res/res.dart';
 import 'package:goodfood/screens/wish/provider.dart';
 import 'package:goodfood/screens/wish/widgets/appbar.dart';
+import 'package:goodfood/screens/wish/widgets/nowishes.dart';
 import 'package:goodfood/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,6 +35,8 @@ class _WishViewState extends State<WishView> {
             return Column(
               children: <Widget>[
                 WishAppBarWidget(),
+                // if ((state.wishes ?? []).length == 0)
+                NoWishesWidget(),
               ],
             );
           },
