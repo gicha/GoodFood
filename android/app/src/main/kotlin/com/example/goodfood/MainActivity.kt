@@ -1,4 +1,4 @@
-package com.example.goodfood
+package team.itis.goodfood
 
 import android.os.Bundle
 
