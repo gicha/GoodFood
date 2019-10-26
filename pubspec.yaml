@@ -62,6 +62,7 @@ flutter:
     - assets/images/yellow_human.png
     - assets/images/red_human.png
     - assets/images/blue_human.png
+    - assets/images/pero.png
 
   fonts:
     - family: Montserrat

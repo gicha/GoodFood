@@ -22,7 +22,7 @@ class _$WishSerializer implements StructuredSerializer<Wish> {
       result
         ..add('id')
         ..add(serializers.serialize(object.id,
-            specifiedType: const FullType(String)));
+            specifiedType: const FullType(int)));
     }
     if (object.category != null) {
       result
@@ -64,7 +64,7 @@ class _$WishSerializer implements StructuredSerializer<Wish> {
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(int)) as int;
           break;
         case 'category':
           result.category = serializers.deserialize(value,
@@ -91,7 +91,7 @@ class _$WishSerializer implements StructuredSerializer<Wish> {
 
 class _$Wish extends Wish {
   @override
-  final String id;
+  final int id;
   @override
   final String category;
   @override
@@ -148,9 +148,9 @@ class _$Wish extends Wish {
 class WishBuilder implements Builder<Wish, WishBuilder> {
   _$Wish _$v;
 
-  String _id;
-  String get id => _$this._id;
-  set id(String id) => _$this._id = id;
+  int _id;
+  int get id => _$this._id;
+  set id(int id) => _$this._id = id;
 
   String _category;
   String get category => _$this._category;

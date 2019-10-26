@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:goodfood/res/res.dart';
 import 'package:goodfood/res/text_style.dart';
+import 'package:goodfood/screens/wish_editor/index.dart';
+import 'package:page_transition/page_transition.dart';
 
 class WishAppBarWidget extends StatelessWidget {
   const WishAppBarWidget({Key key}) : super(key: key);
@@ -30,7 +32,8 @@ class WishAppBarWidget extends StatelessWidget {
           ),
           Expanded(child: Container()),
           GestureDetector(
-            onTap: () {},
+            onTap: () =>
+                Navigator.of(context).push(PageTransition(type: PageTransitionType.fade, child: WishEditorScreen())),
             child: Container(
               margin: EdgeInsets.only(bottom: 7),
               width: 40,

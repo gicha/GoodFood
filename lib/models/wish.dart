@@ -10,7 +10,7 @@ abstract class Wish implements Built<Wish, WishBuilder> {
 
   @nullable
   @BuiltValueField(wireName: 'id')
-  String get id;
+  int get id;
 
   @nullable
   @BuiltValueField(wireName: 'category')
