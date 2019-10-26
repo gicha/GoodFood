@@ -17,12 +17,14 @@ class _WishScreenState extends State<WishScreen> with AutomaticKeepAliveClientMi
   //other
 
   WishProvider provider;
-  TextEditingController findController;
+
+  ScrollController scrollController;
 
   @override
   void initState() {
     wishBloc = WishBloc.getInstance();
-    provider = WishProvider(wishBloc: wishBloc);
+    scrollController = ScrollController();
+    provider = WishProvider(wishBloc: wishBloc, scrollController: scrollController);
     super.initState();
   }
 

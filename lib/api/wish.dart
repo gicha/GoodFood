@@ -8,4 +8,8 @@ class WishApi {
     }, onError: (e) {});
     return items;
   }
+
+  static Future<void> delete(id) async {
+    await Api.dio.get("/wish_delete/$id/").then((res) {}, onError: (e) {});
+  }
 }

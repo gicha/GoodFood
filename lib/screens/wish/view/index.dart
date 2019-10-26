@@ -33,12 +33,32 @@ class _WishViewState extends State<WishView> {
         child: BlocBuilder(
           bloc: wishBloc,
           builder: (context, WishState state) {
-            return Column(
+            return Stack(
               children: <Widget>[
+                SingleChildScrollView(
+                  controller: provider.scrollController,
+                  padding: EdgeInsets.only(top: 60),
+                  child: Column(
+                    children: [
+                      if ((state.wishes ?? []).length == 0) NoWishesWidget(),
+                      if ((state.wishes ?? []).length != 0)
+                        ...List.generate(state.wishes.length, (index) => WishItemWidget(wish: state.wishes[index])),
+                      if ((state.wishes ?? []).length != 0)
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Image.asset(
+                              "assets/images/blue_human.png",
+                              height: MediaQuery.of(context).size.height * .5,
+                              width: MediaQuery.of(context).size.width * .7,
+                            ),
+                            SizedBox(width: MediaQuery.of(context).size.width * .02),
+                          ],
+                        ),
+                    ],
+                  ),
+                ),
                 WishAppBarWidget(),
-                if ((state.wishes ?? []).length == 0) NoWishesWidget(),
-                if ((state.wishes ?? []).length != 0)
-                  ...List.generate(state.wishes.length, (index) => WishItemWidget(wish: state.wishes[index]))
               ],
             );
           },
