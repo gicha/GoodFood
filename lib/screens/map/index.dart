@@ -30,7 +30,7 @@ class _MapScreenState extends State<MapScreen> with AutomaticKeepAliveClientMixi
     shopBloc = ShopBloc.getInstance();
     findController = TextEditingController();
     provider = MapProvider(shopBloc: shopBloc, selfBloc: selfBloc, findController: findController);
-    provider.initFilter();
+    // provider.initFilter();
     provider.subscribeOnLocation(locationSubscr);
     super.initState();
   }

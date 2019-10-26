@@ -16,7 +16,7 @@ class DateTimeSerializer implements PrimitiveSerializer<DateTime> {
 
   @override
   DateTime deserialize(Serializers serializers, Object serialized, {FullType specifiedType: FullType.unspecified}) {
-    return DateTime.parse(serialized);
+    return DateTime.tryParse(serialized);
   }
 
   @override

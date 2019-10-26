@@ -22,12 +22,12 @@ class MapProvider {
   LatLngBounds lastBounds;
   CameraPosition lastPosition;
 
-  initFilter() async {
-    List<ShopType> types = await PublicApi.types();
-    shopBloc.dispatch(
-      SetTypesEvent(types),
-    );
-  }
+  // initFilter() async {
+  //   List<Shop> shops = await ShopApi.all();
+  //   shopBloc.dispatch(
+  //     SetTypesEvent(types),
+  //   );
+  // }
 
   subscribeOnLocation(StreamSubscription locationSubscr) {
     locationSubscr = ln.Location().onLocationChanged().listen((ln.LocationData currentLocation) {
@@ -44,10 +44,11 @@ class MapProvider {
   }
 
   void onCameraIdle() async {
+    List<Shop> shops;
     if (lastBounds == null) {
       lastBounds = await controller.getVisibleRegion();
+      shops = await ShopApi.all();
     }
-    List<Shop> shops = await ShopApi.getByBounds(lastBounds, filter: shopBloc.currentState.filter);
     shopBloc.dispatch(FetchShopEvent(shops: shops, bounds: lastBounds));
   }
 

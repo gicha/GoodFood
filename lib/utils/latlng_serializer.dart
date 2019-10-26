@@ -17,7 +17,7 @@ class LatLngSerializer implements PrimitiveSerializer<LatLng> {
   @override
   LatLng deserialize(Serializers serializers, Object serialized, {FullType specifiedType: FullType.unspecified}) {
     List<dynamic> toSerialize = serialized as List<dynamic>;
-    return LatLng(toSerialize[0], toSerialize[1]);
+    return LatLng(toSerialize[1], toSerialize[3]);
   }
 
   @override

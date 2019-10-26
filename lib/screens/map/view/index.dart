@@ -104,15 +104,15 @@ class _MapViewState extends State<MapView> {
                       onCameraIdle: provider.onCameraIdle,
                     ),
                   ),
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      margin: EdgeInsets.only(
-                        top: 12,
-                      ),
-                      child: FinLineView(provider: provider),
-                    ),
-                  ),
+                  // Align(
+                  //   alignment: Alignment.topCenter,
+                  //   child: Container(
+                  //     margin: EdgeInsets.only(
+                  //       top: 12,
+                  //     ),
+                  //     child: FinLineView(provider: provider),
+                  //   ),
+                  // ),
                   Positioned(
                     bottom: 310 + MediaQuery.of(context).viewPadding.bottom,
                     right: 12,

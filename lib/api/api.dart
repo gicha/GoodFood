@@ -13,7 +13,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../models/serializers.dart';
 import '../models/models.dart';
 
-// part './store.dart';
+part './shop.dart';
 // part './route.dart';
 // part './user.dart';
 // part './auth.dart';

@@ -1,8 +1,8 @@
 import 'dart:ui' as ui;
 
 import 'package:goodfood/generated/i18n.dart';
-import 'package:goodfood/models/model.dart';
 import 'package:goodfood/blocs/blocs.dart';
+import 'package:goodfood/models/models.dart';
 import 'package:goodfood/res/res.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
@@ -12,7 +12,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 class MapWidget extends StatefulWidget {
   final LatLng center;
   final double centerZoom;
-  final StoreBloc shopBloc;
+  final ShopBloc shopBloc;
   final LatLng selfPosition;
   final void Function(GoogleMapController) onMapCreate;
   final void Function(CameraPosition) onCameraMove;
@@ -37,7 +37,7 @@ class MapWidget extends StatefulWidget {
 class MapWidgetState extends State<MapWidget> {
   LatLng get center => widget.center;
   double get centerZoom => widget.centerZoom;
-  StoreBloc get shopBloc => widget.shopBloc;
+  ShopBloc get shopBloc => widget.shopBloc;
   DialogBloc get dialogBloc => DialogBloc.getInstance();
   LatLng get selfPosition => widget.selfPosition;
   NotificationBloc get notificationBloc => NotificationBloc.getInstance();
@@ -61,9 +61,9 @@ class MapWidgetState extends State<MapWidget> {
   @override
   void initState() {
     buildSelfBitmap().then((bitmap) => setState(() => selfMarkerBitmap = bitmap));
-    buildStoreBitmap(ITColors.primary).then((bitmap) => setState(() => primaryMarkerBitmap = bitmap));
-    buildStoreBitmap(Colors.blue).then((bitmap) => setState(() => choosedMarkerBitmap = bitmap));
-    buildStoreBitmap(Colors.red).then((bitmap) => setState(() => routeMarkerBitmap = bitmap));
+    buildShopBitmap(ITColors.primary).then((bitmap) => setState(() => primaryMarkerBitmap = bitmap));
+    buildShopBitmap(Colors.blue).then((bitmap) => setState(() => choosedMarkerBitmap = bitmap));
+    buildShopBitmap(Colors.red).then((bitmap) => setState(() => routeMarkerBitmap = bitmap));
     _initialCameraPosition = CameraPosition(target: center, zoom: centerZoom != null ? centerZoom : 11.1);
     super.initState();
     rootBundle.loadString(styleAsset).then((string) {
@@ -80,7 +80,7 @@ class MapWidgetState extends State<MapWidget> {
   Widget build(BuildContext context) {
     return BlocBuilder(
       bloc: shopBloc,
-      builder: (context, StoreState shopBlocState) {
+      builder: (context, ShopState shopBlocState) {
         return GoogleMap(
           onCameraMove: (CameraPosition position) => onCameraMove != null ? onCameraMove(position) : () => {},
           onCameraIdle: () => onCameraIdle != null ? onCameraIdle() : () => {},
@@ -90,65 +90,65 @@ class MapWidgetState extends State<MapWidget> {
             _controller.setMapStyle(_mapStyle);
             if (onMapCreate != null) onMapCreate(_controller);
           },
-          onLongPress: (LatLng aimLocation) {
-            if (selfPosition.latitude != null) {
-              dialogBloc.dispatch(OpenDialogEvent(
-                  confirm: () => shopBloc.dispatch(
-                      BuildRouteEvent(LatLng(selfPosition.latitude, selfPosition.longitude), '', latLng: aimLocation)),
-                  text: I18n.of(context).toNearestStore));
-            } else
-              notificationBloc.dispatch(NotificationEvent(I18n.of(context).findLocation));
-          },
+          // onLongPress: (LatLng aimLocation) {
+          //   if (selfPosition.latitude != null) {
+          //     dialogBloc.dispatch(OpenDialogEvent(
+          //         confirm: () => shopBloc.dispatch(
+          //             BuildRouteEvent(LatLng(selfPosition.latitude, selfPosition.longitude), '', latLng: aimLocation)),
+          //         text: I18n.of(context).toNearestShop));
+          //   } else
+          //     notificationBloc.dispatch(NotificationEvent(I18n.of(context).findLocation));
+          // },
           compassEnabled: false,
           rotateGesturesEnabled: false,
           tiltGesturesEnabled: false,
           markers: buildMarkers(
-              shopBlocState.shops, shopBlocState.routeStore, shopBlocState.finishPoint, shopBlocState.shopToPreview),
+              shopBlocState.shops, shopBlocState.routeShop, shopBlocState.finishPoint, shopBlocState.shopToPreview),
           polylines: shopBlocState.route == null ? Set() : Set.from([shopBlocState.route]),
         );
       },
     );
   }
 
-  Set<Marker> buildMarkers(List<Store> shops, Store routeStore, LatLng finish, Store previewStore) {
+  Set<Marker> buildMarkers(List<Shop> shops, Shop routeShop, LatLng finish, Shop previewShop) {
     return [
       ...List.generate(shops.length, (index) {
-        if (shops[index]?.location?.coordinates != null && primaryMarkerBitmap != null)
+        if (shops[index]?.address?.coordinates != null && primaryMarkerBitmap != null)
           return Marker(
             markerId: MarkerId(shops[index].id.toString()),
             consumeTapEvents: true,
             icon: primaryMarkerBitmap,
-            position: shops[index]?.location?.coordinates,
+            position: shops[index]?.address?.coordinates,
             onTap: () {
-              mapController.animateCamera(CameraUpdate.newLatLngZoom(shops[index].location.coordinates, 14));
+              mapController.animateCamera(CameraUpdate.newLatLngZoom(shops[index].address.coordinates, 14));
               shopBloc.dispatch(
-                StorePreviewEvent(shop: shops[index]),
+                ShopPreviewEvent(shop: shops[index]),
               );
             },
           );
         return Marker(markerId: MarkerId(""));
       }),
-      if (routeStore?.location?.coordinates != null && choosedMarkerBitmap != null)
+      if (routeShop?.address?.coordinates != null && choosedMarkerBitmap != null)
         Marker(
-            markerId: MarkerId(routeStore.id.toString()),
+            markerId: MarkerId(routeShop.id.toString()),
             consumeTapEvents: true,
             icon: choosedMarkerBitmap,
-            position: routeStore.location.coordinates,
+            position: routeShop.address.coordinates,
             onTap: () {
-              mapController.animateCamera(CameraUpdate.newLatLngZoom(routeStore.location.coordinates, 14));
-              shopBloc.dispatch(StorePreviewEvent(shop: routeStore));
+              mapController.animateCamera(CameraUpdate.newLatLngZoom(routeShop.address.coordinates, 14));
+              shopBloc.dispatch(ShopPreviewEvent(shop: routeShop));
             }),
       if (finish != null && routeMarkerBitmap != null)
         Marker(markerId: MarkerId("finish"), consumeTapEvents: true, icon: routeMarkerBitmap, position: finish),
-      if (previewStore?.location?.coordinates != null && choosedMarkerBitmap != null)
+      if (previewShop?.address?.coordinates != null && choosedMarkerBitmap != null)
         Marker(
-            markerId: MarkerId(previewStore.id.toString()),
+            markerId: MarkerId(previewShop.id.toString()),
             consumeTapEvents: true,
             icon: choosedMarkerBitmap,
-            position: previewStore.location.coordinates,
+            position: previewShop.address.coordinates,
             onTap: () {
-              mapController.animateCamera(CameraUpdate.newLatLngZoom(previewStore.location.coordinates, 14));
-              shopBloc.dispatch(StorePreviewEvent(shop: previewStore));
+              mapController.animateCamera(CameraUpdate.newLatLngZoom(previewShop.address.coordinates, 14));
+              shopBloc.dispatch(ShopPreviewEvent(shop: previewShop));
             }),
       if (selfPosition != null && selfMarkerBitmap != null)
         Marker(
@@ -178,7 +178,7 @@ class MapWidgetState extends State<MapWidget> {
     return BitmapDescriptor.fromBytes(byteData.buffer.asUint8List());
   }
 
-  buildStoreBitmap(Color color) async {
+  buildShopBitmap(Color color) async {
     var pictureRecorder = ui.PictureRecorder();
     var size = ui.window.devicePixelRatio;
     var canvas = Canvas(pictureRecorder);
