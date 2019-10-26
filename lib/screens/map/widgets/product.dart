@@ -45,7 +45,7 @@ class ProductWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text('${Utils.getDateTimeDifference(product.date)}', style: ITTextStyle(color: ITColors.secondaryText)),
-                Text('${product.count} pcs.', style: ITTextStyle(color: ITColors.secondaryText)),
+                Text('${product.count.floor()} pcs.', style: ITTextStyle(color: ITColors.secondaryText)),
               ],
             )
           ],

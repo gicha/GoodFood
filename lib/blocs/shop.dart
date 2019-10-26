@@ -25,6 +25,11 @@ class ShopPreviewEvent extends ShopEvent {
   ShopPreviewEvent({this.shop});
 }
 
+class FindProductsEvent extends ShopEvent {
+  final String findString;
+  FindProductsEvent(this.findString);
+}
+
 // class BuildRouteEvent extends ShopEvent {
 //   final LatLng myLocation;
 //   final String place;
@@ -37,6 +42,7 @@ class ShopState {
   List<Shop> shops = [];
   List<String> filter = [];
   bool isRefreshed;
+  String findString;
   bool buildingRoute = false;
   LoadStatus loadStatus = LoadStatus.loading;
   LatLng selfLocation;
@@ -52,10 +58,10 @@ class ShopState {
 
   ShopState copyWith({
     List<Shop> shops,
-    // List<ShopType> types,
     List<String> filter,
     Shop shopToPreview,
     bool isRefreshed,
+    String findString,
     bool buildingRoute,
     List<String> filters,
     Map<String, LatLng> markers,
@@ -70,7 +76,7 @@ class ShopState {
     return ShopState()
       ..shopToPreview = shopToPreview ?? this.shopToPreview
       ..shops = shops ?? this.shops
-      // ..types = types ?? this.types
+      ..findString = findString ?? this.findString
       ..filter = filter ?? this.filter
       ..isRefreshed = isRefreshed ?? this.isRefreshed
       ..buildingRoute = buildingRoute ?? this.buildingRoute
@@ -121,6 +127,15 @@ class ShopBloc extends Bloc<ShopEvent, ShopState> {
     }
     if (event is ShopPreviewEvent) yield currentState.copyWith(shopToPreview: event?.shop);
     if (event is UpdateSelfLocationShopEvent) yield currentState.copyWith(selfLocation: event.location);
+    if (event is FindProductsEvent) {
+      yield currentState.copyWith(loadStatus: LoadStatus.loading);
+      List<Shop> shops =
+          (event.findString ?? "").length == 0 ? await ShopApi.all() : await ShopApi.byTag(event.findString);
+      yield currentState.copyWith(
+          findString: (event.findString ?? "").length == 0 ? null : event.findString,
+          shops: shops,
+          loadStatus: LoadStatus.loaded);
+    }
     // if (event is BuildRouteEvent) {
     //   yield currentState.copyWith(buildingRoute: true);
     //   if (event.place == '' && event.latLng == null) {

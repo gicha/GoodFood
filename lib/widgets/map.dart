@@ -113,7 +113,9 @@ class MapWidgetState extends State<MapWidget> {
   Set<Marker> buildMarkers(List<Shop> shops, Shop routeShop, LatLng finish, Shop previewShop) {
     return [
       ...List.generate(shops.length, (index) {
-        if (shops[index]?.address?.coordinates != null && primaryMarkerBitmap != null)
+        if (shops[index]?.address?.coordinates != null &&
+            shops[index]?.products?.length != 0 &&
+            primaryMarkerBitmap != null)
           return Marker(
             markerId: MarkerId(shops[index].id.toString()),
             consumeTapEvents: true,

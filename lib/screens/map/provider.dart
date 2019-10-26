@@ -46,16 +46,16 @@ class MapProvider {
   void onCameraIdle() async {
     List<Shop> shops;
     if (lastBounds == null) lastBounds = await controller.getVisibleRegion();
-    shops = await ShopApi.all();
+    shops = (shopBloc.currentState.findString ?? "").length == 0
+        ? await ShopApi.all()
+        : await ShopApi.byTag(shopBloc.currentState.findString);
     shopBloc.dispatch(FetchShopEvent(shops: shops, bounds: lastBounds));
   }
 
   animateToShop(Shop shop) {
     if (lastPosition?.zoom == null) return;
     controller.animateCamera(
-      CameraUpdate.newCameraPosition(
-        CameraPosition(target: shop.address.coordinates, zoom: lastPosition?.zoom),
-      ),
+      CameraUpdate.newCameraPosition(CameraPosition(target: shop.address.coordinates, zoom: lastPosition?.zoom)),
     );
   }
 
