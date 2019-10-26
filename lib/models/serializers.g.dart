@@ -11,7 +11,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Content.serializer)
       ..add(Order.serializer)
       ..add(Product.serializer)
-      ..add(Store.serializer)
+      ..add(Shop.serializer)
       ..add(Wish.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Product)]),

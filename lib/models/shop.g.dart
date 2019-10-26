@@ -1,21 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'store.dart';
+part of 'shop.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<Store> _$storeSerializer = new _$StoreSerializer();
+Serializer<Shop> _$shopSerializer = new _$ShopSerializer();
 
-class _$StoreSerializer implements StructuredSerializer<Store> {
+class _$ShopSerializer implements StructuredSerializer<Shop> {
   @override
-  final Iterable<Type> types = const [Store, _$Store];
+  final Iterable<Type> types = const [Shop, _$Shop];
   @override
-  final String wireName = 'Store';
+  final String wireName = 'Shop';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Store object,
+  Iterable<Object> serialize(Serializers serializers, Shop object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
     if (object.id != null) {
@@ -53,9 +53,9 @@ class _$StoreSerializer implements StructuredSerializer<Store> {
   }
 
   @override
-  Store deserialize(Serializers serializers, Iterable<Object> serialized,
+  Shop deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new StoreBuilder();
+    final result = new ShopBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -92,7 +92,7 @@ class _$StoreSerializer implements StructuredSerializer<Store> {
   }
 }
 
-class _$Store extends Store {
+class _$Shop extends Shop {
   @override
   final String id;
   @override
@@ -104,23 +104,23 @@ class _$Store extends Store {
   @override
   final String phone;
 
-  factory _$Store([void Function(StoreBuilder) updates]) =>
-      (new StoreBuilder()..update(updates)).build();
+  factory _$Shop([void Function(ShopBuilder) updates]) =>
+      (new ShopBuilder()..update(updates)).build();
 
-  _$Store._({this.id, this.name, this.address, this.products, this.phone})
+  _$Shop._({this.id, this.name, this.address, this.products, this.phone})
       : super._();
 
   @override
-  Store rebuild(void Function(StoreBuilder) updates) =>
+  Shop rebuild(void Function(ShopBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  StoreBuilder toBuilder() => new StoreBuilder()..replace(this);
+  ShopBuilder toBuilder() => new ShopBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Store &&
+    return other is Shop &&
         id == other.id &&
         name == other.name &&
         address == other.address &&
@@ -138,7 +138,7 @@ class _$Store extends Store {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Store')
+    return (newBuiltValueToStringHelper('Shop')
           ..add('id', id)
           ..add('name', name)
           ..add('address', address)
@@ -148,8 +148,8 @@ class _$Store extends Store {
   }
 }
 
-class StoreBuilder implements Builder<Store, StoreBuilder> {
-  _$Store _$v;
+class ShopBuilder implements Builder<Shop, ShopBuilder> {
+  _$Shop _$v;
 
   String _id;
   String get id => _$this._id;
@@ -172,9 +172,9 @@ class StoreBuilder implements Builder<Store, StoreBuilder> {
   String get phone => _$this._phone;
   set phone(String phone) => _$this._phone = phone;
 
-  StoreBuilder();
+  ShopBuilder();
 
-  StoreBuilder get _$this {
+  ShopBuilder get _$this {
     if (_$v != null) {
       _id = _$v.id;
       _name = _$v.name;
@@ -187,24 +187,24 @@ class StoreBuilder implements Builder<Store, StoreBuilder> {
   }
 
   @override
-  void replace(Store other) {
+  void replace(Shop other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$Store;
+    _$v = other as _$Shop;
   }
 
   @override
-  void update(void Function(StoreBuilder) updates) {
+  void update(void Function(ShopBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$Store build() {
-    _$Store _$result;
+  _$Shop build() {
+    _$Shop _$result;
     try {
       _$result = _$v ??
-          new _$Store._(
+          new _$Shop._(
               id: id,
               name: name,
               address: _address?.build(),
@@ -219,7 +219,7 @@ class StoreBuilder implements Builder<Store, StoreBuilder> {
         _products?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'Store', _$failedField, e.toString());
+            'Shop', _$failedField, e.toString());
       }
       rethrow;
     }

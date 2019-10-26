@@ -22,7 +22,7 @@ part 'serializers.g.dart';
 /// ```
 ///
 /// {@category Network}
-@SerializersFor(const [Address, Store, Product, Content, Order, Wish])
+@SerializersFor(const [Address, Shop, Product, Content, Order, Wish])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DateTimeSerializer())
       ..add(LatLngSerializer())

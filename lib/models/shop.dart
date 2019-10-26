@@ -3,12 +3,12 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:goodfood/models/models.dart';
 
-part 'store.g.dart';
+part 'shop.g.dart';
 
-abstract class Store implements Built<Store, StoreBuilder> {
-  Store._();
+abstract class Shop implements Built<Shop, ShopBuilder> {
+  Shop._();
 
-  factory Store([updates(StoreBuilder b)]) = _$Store;
+  factory Shop([updates(ShopBuilder b)]) = _$Shop;
 
   @nullable
   @BuiltValueField(wireName: 'id')
@@ -30,5 +30,5 @@ abstract class Store implements Built<Store, StoreBuilder> {
   @BuiltValueField(wireName: 'phone')
   String get phone;
 
-  static Serializer<Store> get serializer => _$storeSerializer;
+  static Serializer<Shop> get serializer => _$shopSerializer;
 }

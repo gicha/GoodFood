@@ -2,7 +2,7 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 
 ///A Serializer which does basically "nothing".
-/// It is used, as a DateTime returned by Firestore is ALREADY a DateTime Object
+/// It is used, as a DateTime returned by Fireshop is ALREADY a DateTime Object
 /// and not just "data" which has to be deserialized into a DateTime.
 class DateTimeSerializer implements PrimitiveSerializer<DateTime> {
   final bool structured = false;

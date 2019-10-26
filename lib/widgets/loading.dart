@@ -47,7 +47,7 @@ class ITLoading extends StatelessWidget {
                   margin: EdgeInsets.only(top: 24),
                   child: Text(
                     text ?? I18n.of(context).loading,
-                    style: TextStyle(fontSize: 12),
+                    style: TextStyle(fontSize: 12, color: ITColors.primary),
                   ),
                 )
               ],

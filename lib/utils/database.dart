@@ -25,11 +25,11 @@ class DataBase {
   }
 
   static Future loadFromDB() async {
-    var store = StoreRef<String, dynamic>.main();
+    var shop = StoreRef<String, dynamic>.main();
   }
 
   static Future saveToDB() async {
-    var store = StoreRef<String, dynamic>.main();
+    var shop = StoreRef<String, dynamic>.main();
   }
 }
 

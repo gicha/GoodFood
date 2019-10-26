@@ -8,7 +8,7 @@
     "needLocation": "Для корректной работы, приложению нужен доступ к вашей геопозиции",
     "confirm": "Confirm",
     "cancel": "Cancel",
-    "toNearestReceiver": "Построить ближайший маршрут через контейнер?",
+    "toNearestStore": "Построить ближайший маршрут через контейнер?",
     "wrongLoginOrPassword": "Неправильный email или пароль",
     "history": "History",
     "mail": "Email",

@@ -1,7 +1,7 @@
 library models;
 
 export './address.dart';
-export './store.dart';
+export './shop.dart';
 export './product.dart';
 export './wish.dart';
 export './order.dart';

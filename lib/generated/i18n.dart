@@ -21,82 +21,112 @@ class I18n implements WidgetsLocalizations {
     I18n._locale = _newLocale;
   }
 
-  static const GeneratedLocalizationsDelegate delegate =
-    const GeneratedLocalizationsDelegate();
+  static const GeneratedLocalizationsDelegate delegate = const GeneratedLocalizationsDelegate();
 
   /// function to be invoked when changing the language
   static LocaleChangeCallback onLocaleChanged;
 
-  static I18n of(BuildContext context) =>
-    Localizations.of<I18n>(context, WidgetsLocalizations);
+  static I18n of(BuildContext context) => Localizations.of<I18n>(context, WidgetsLocalizations);
 
   @override
   TextDirection get textDirection => TextDirection.ltr;
 
   /// "Подождите, идёт загрузка..."
   String get loading => "Подождите, идёт загрузка...";
+
   /// "Goodfood"
   String get title => "Goodfood";
+
   /// "Название отсутствует"
   String get noTitle => "Название отсутствует";
+
   /// "Описание отсутствует"
   String get noDesc => "Описание отсутствует";
+
   /// "Местоположение не установлено"
   String get noLocation => "Местоположение не установлено";
+
   /// "Подождите, мы определяем ваше местоположение"
   String get findLocation => "Подождите, мы определяем ваше местоположение";
+
   /// "Для корректной работы, приложению нужен доступ к вашей геопозиции"
   String get needLocation => "Для корректной работы, приложению нужен доступ к вашей геопозиции";
+
   /// "Подтвердить"
   String get confirm => "Подтвердить";
+
   /// "Отменить"
   String get cancel => "Отменить";
+
   /// "Построить ближайший маршрут через контейнер?"
-  String get toNearestReceiver => "Построить ближайший маршрут через контейнер?";
+  String get toNearestStore => "Построить ближайший маршрут через контейнер?";
+
   /// "Контейнер не выбран"
-  String get noReceiver => "Контейнер не выбран";
+  String get noStore => "Контейнер не выбран";
+
   /// "Ближайший контейнер #${name}"
-  String nearestReceiver(String name) => "Ближайший контейнер #${name}";
+  String nearestStore(String name) => "Ближайший контейнер #${name}";
+
   /// "Неправильный email или пароль"
   String get wrongLoginOrPassword => "Неправильный email или пароль";
+
   /// "История"
   String get history => "История";
+
   /// "Email"
   String get mail => "Email";
+
   /// "Пароль"
   String get password => "Пароль";
+
   /// "Повторите пароль"
   String get rePassword => "Повторите пароль";
+
   /// "Пароли не совпадают"
   String get passwordDoesntMatch => "Пароли не совпадают";
+
   /// "Имя"
   String get name => "Имя";
+
   /// "Фамилия"
   String get surname => "Фамилия";
+
   /// "Войти"
   String get entry => "Войти";
+
   /// "Регистрация"
   String get registration => "Регистрация";
+
   /// "Считать QR"
   String get readQR => "Считать QR";
+
   /// "Обратная связь"
   String get feedback => "Обратная связь";
+
   /// "Нет аккаунта? "
   String get notHaveAccount => "Нет аккаунта? ";
+
   /// "Есть аккаунт? "
   String get haveAccount => "Есть аккаунт? ";
+
   /// "Вход по логину"
   String get entranceWithLogin => "Вход по логину";
+
   /// "Отсутствует подключение к интернету. Проверьте соединение"
   String get networkError => "Отсутствует подключение к интернету. Проверьте соединение";
+
   /// "Отправить"
   String get send => "Отправить";
+
   /// "Фильтр"
   String get filter => "Фильтр";
+
   /// "Опишите вашу проблему"
   String get describeYourProblem => "Опишите вашу проблему";
+
   /// "Сообщить о проблеме"
   String get reportProblem => "Сообщить о проблеме";
+
   /// "закрыть"
   String get close => "закрыть";
 }
@@ -114,93 +144,123 @@ class _I18n_en_US extends I18n {
   /// "Wait please, loading..."
   @override
   String get loading => "Wait please, loading...";
+
   /// "Goodfood"
   @override
   String get title => "Goodfood";
+
   /// "Title is undefined"
   @override
   String get noTitle => "Title is undefined";
+
   /// "Description is undefined"
   @override
   String get noDesc => "Description is undefined";
+
   /// "Location is undefined"
   @override
   String get noLocation => "Location is undefined";
+
   /// "Подождите, мы определяем ваше местоположение"
   @override
   String get findLocation => "Подождите, мы определяем ваше местоположение";
+
   /// "Для корректной работы, приложению нужен доступ к вашей геопозиции"
   @override
   String get needLocation => "Для корректной работы, приложению нужен доступ к вашей геопозиции";
+
   /// "Confirm"
   @override
   String get confirm => "Confirm";
+
   /// "Cancel"
   @override
   String get cancel => "Cancel";
+
   /// "Построить ближайший маршрут через контейнер?"
   @override
-  String get toNearestReceiver => "Построить ближайший маршрут через контейнер?";
+  String get toNearestStore => "Построить ближайший маршрут через контейнер?";
+
   /// "Неправильный email или пароль"
   @override
   String get wrongLoginOrPassword => "Неправильный email или пароль";
+
   /// "History"
   @override
   String get history => "History";
+
   /// "Email"
   @override
   String get mail => "Email";
+
   /// "Password"
   @override
   String get password => "Password";
+
   /// "Re enter password"
   @override
   String get rePassword => "Re enter password";
+
   /// "Passwords doesn't match"
   @override
   String get passwordDoesntMatch => "Passwords doesn't match";
+
   /// "Name"
   @override
   String get name => "Name";
+
   /// "Surname"
   @override
   String get surname => "Surname";
+
   /// "Login"
   @override
   String get entry => "Login";
+
   /// "Register"
   @override
   String get registration => "Register";
+
   /// "Read QR"
   @override
   String get readQR => "Read QR";
+
   /// "Feedback"
   @override
   String get feedback => "Feedback";
+
   /// "Dont have account? "
   @override
   String get notHaveAccount => "Dont have account? ";
+
   /// "Already have accout?"
   @override
   String get haveAccount => "Already have accout?";
+
   /// "Вход по логину"
   @override
   String get entranceWithLogin => "Вход по логину";
+
   /// "Отсутствует подключение к интернету. Проверьте соединение"
   @override
-  String get networkError => "Отсутствует подключение к интернету. Проверьте соединение";
+  String get networkError => "Отсутствует подключение к интернету. Проверьте сое��инение";
+
   /// "Отправить"
   @override
   String get send => "Отправить";
+
   /// "Filter"
   @override
   String get filter => "Filter";
+
   /// "Опишите вашу проблему"
   @override
   String get describeYourProblem => "Опишите вашу проблему";
+
   /// "Сообщить о проблеме"
   @override
   String get reportProblem => "Сообщить о проблеме";
+
   /// "закрыть"
   @override
   String get close => "закрыть";
@@ -212,10 +272,7 @@ class _I18n_en_US extends I18n {
 class GeneratedLocalizationsDelegate extends LocalizationsDelegate<WidgetsLocalizations> {
   const GeneratedLocalizationsDelegate();
   List<Locale> get supportedLocales {
-    return const <Locale>[
-      const Locale("ru", "RU"),
-      const Locale("en", "US")
-    ];
+    return const <Locale>[const Locale("ru", "RU"), const Locale("en", "US")];
   }
 
   LocaleResolutionCallback resolution({Locale fallback}) {
@@ -237,14 +294,11 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<WidgetsLocali
     final String languageCode = locale != null ? locale.languageCode : "";
     if ("ru_RU" == lang) {
       return new SynchronousFuture<WidgetsLocalizations>(const _I18n_ru_RU());
-    }
-    else if ("en_US" == lang) {
+    } else if ("en_US" == lang) {
       return new SynchronousFuture<WidgetsLocalizations>(const _I18n_en_US());
-    }
-    else if ("ru" == languageCode) {
+    } else if ("ru" == languageCode) {
       return new SynchronousFuture<WidgetsLocalizations>(const _I18n_ru_RU());
-    }
-    else if ("en" == languageCode) {
+    } else if ("en" == languageCode) {
       return new SynchronousFuture<WidgetsLocalizations>(const _I18n_en_US());
     }
 
