@@ -23,3 +23,4 @@ part './notification.dart';
 part './dialog.dart';
 part './self.dart';
 part './shop.dart';
+part './wish.dart';

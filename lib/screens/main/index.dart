@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goodfood/screens/main/blocs/index.dart';
 import 'package:goodfood/screens/map/index.dart';
+import 'package:goodfood/screens/wish/index.dart';
 import 'package:line_icons/line_icons.dart';
 
 /// Application Home Screen
@@ -19,7 +20,7 @@ class _MainScreenState extends State<MainScreen> {
   PageController pageController;
 
   List<Widget> pages = [
-    Container(),
+    WishScreen(),
     MapScreen(),
     Container(),
   ];

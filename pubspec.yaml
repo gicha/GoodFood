@@ -57,6 +57,11 @@ flutter:
     - assets/map/style.txt
     - assets/animations/loading.flr
     - assets/animations/okay.flr
+
+    - assets/images/yellow_human.png
+    - assets/images/red_human.png
+    - assets/images/blue_human.png
+
   fonts:
     - family: Montserrat
       fonts:

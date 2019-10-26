@@ -14,7 +14,7 @@ import '../models/serializers.dart';
 import '../models/models.dart';
 
 part './shop.dart';
-// part './route.dart';
+part './wish.dart';
 // part './user.dart';
 // part './auth.dart';
 // part './session.dart';
