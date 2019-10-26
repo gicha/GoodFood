@@ -35,8 +35,8 @@ class I18n implements WidgetsLocalizations {
 
   /// "Подождите, идёт загрузка..."
   String get loading => "Подождите, идёт загрузка...";
-  /// "Ecohub"
-  String get title => "Ecohub";
+  /// "Goodfood"
+  String get title => "Goodfood";
   /// "Название отсутствует"
   String get noTitle => "Название отсутствует";
   /// "Описание отсутствует"
@@ -114,9 +114,9 @@ class _I18n_en_US extends I18n {
   /// "Wait please, loading..."
   @override
   String get loading => "Wait please, loading...";
-  /// "Ecohub"
+  /// "Goodfood"
   @override
-  String get title => "Ecohub";
+  String get title => "Goodfood";
   /// "Title is undefined"
   @override
   String get noTitle => "Title is undefined";

@@ -5,7 +5,7 @@ Widget confirmDialog(context, {Function confirm, String text}) {
     children: <Widget>[
       Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Text(text ?? 'Вы желаете подтвердить действие?'),
+        child: Text(text ?? 'Вы желаете подтвердить действие?'), //TODO: i18n
       ),
       Padding(
         padding: const EdgeInsets.only(top: 32),

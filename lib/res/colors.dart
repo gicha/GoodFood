@@ -5,8 +5,10 @@ part of './res.dart';
 ///
 /// {@category Resources}
 class ITColors {
-  static const primary = Color(0xFF8BC34A);
-  static const primaryDark = Color(0xFF388E3C);
+  static const primary = Color(0xFF1F5499);
+  static const primaryDark = Color(0xFF1A4782);
+  static const red = Color(0xFFD83731);
+  static const redDark = Color(0xFF800000);
   static const text = Color(0xff212121);
   static const secondaryText = Color(0xff898989);
   static const textDark = Color(0xfffafafa);

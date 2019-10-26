@@ -35,14 +35,10 @@ class SelfBloc extends Bloc<SelfEvent, SelfState> {
               NotificationEvent('Не удалось определить местоположение'),
             ),
           );
-      yield SelfState(
-        position: LatLng(location.latitude, location.longitude),
-      );
+      yield SelfState(position: LatLng(location.latitude, location.longitude));
     }
     if (event is SetPosition) {
-      yield SelfState(
-        position: event.position,
-      );
+      yield SelfState(position: event.position);
     }
   }
 }
