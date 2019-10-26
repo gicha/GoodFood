@@ -45,6 +45,23 @@ class Utils {
         ".${fourDigits(time.year)}";
   }
 
+  static String getDateTimeDifference(DateTime dateTime) {
+    DateTime now = DateTime.now();
+    Duration diff = dateTime.difference(now);
+    String ret = "";
+    if (diff.inDays > 0)
+      ret = '${diff.inDays} days left';
+    else if (diff.inHours > 0)
+      ret = '${diff.inHours} hours left';
+    else if (diff.inMinutes > 0)
+      ret = '${diff.inMinutes} minutes left';
+    else if (diff.inSeconds > 0)
+      ret = '${diff.inSeconds} seconds left';
+    else
+      ret = "expired";
+    return ret;
+  }
+
   static String getHourMinuteString({DateTime dateTime, String stringTime}) {
     DateTime time = dateTime ?? DateTime.parse(stringTime);
     return "${twoDigits(time.hour)}:${twoDigits(time.minute)}";
@@ -64,8 +81,7 @@ class Utils {
         ));
   }
 
-  static Future<T> showInDialog<T>(
-      GlobalKey<ScaffoldState> key, Widget content) {
+  static Future<T> showInDialog<T>(GlobalKey<ScaffoldState> key, Widget content) {
     if (key == null || key.currentState == null) return null;
     return showDialog<T>(
       context: key.currentState.context,
@@ -92,8 +108,7 @@ class Utils {
   }
 
   static Stack buildBlurredContainer(Widget backgroundWidget,
-      {BoxConstraints constraints = const BoxConstraints.expand(),
-      double sigma = 10.0}) {
+      {BoxConstraints constraints = const BoxConstraints.expand(), double sigma = 10.0}) {
     return Stack(
       children: <Widget>[
         Container(constraints: constraints, child: backgroundWidget),
@@ -104,8 +119,7 @@ class Utils {
               children: <Widget>[
                 Container(
                   constraints: constraints,
-                  decoration: BoxDecoration(
-                      color: Colors.grey.shade200.withOpacity(0.1)),
+                  decoration: BoxDecoration(color: Colors.grey.shade200.withOpacity(0.1)),
                 )
               ],
             ),

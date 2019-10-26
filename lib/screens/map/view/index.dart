@@ -46,7 +46,7 @@ class _MapViewState extends State<MapView> {
           parallaxEnabled: true,
           parallaxOffset: 0.8,
           minHeight: 120,
-          maxHeight: height - 208,
+          maxHeight: height - 205,
           borderRadius: radius,
           defaultPanelState: PanelState.CLOSED,
           panel: BlocBuilder(
@@ -69,18 +69,17 @@ class _MapViewState extends State<MapView> {
                         ),
                       ),
                       ShopInfo(shop: state.shopToPreview),
-                      Divider(
-                        height: 2,
-                      ),
+                      Divider(height: 2),
                       Container(
                         height: height - 330,
                         child: SingleChildScrollView(
-                          child: Column(
-                            children: List.generate(
+                          child: Column(children: [
+                            SizedBox(height: 5),
+                            ...List.generate(
                               state.shopToPreview.products?.length ?? 0,
                               (index) => ProductWidget(product: state.shopToPreview.products[index]),
                             ),
-                          ),
+                          ]),
                         ),
                       ),
                     ] else

@@ -61,7 +61,7 @@ class MapWidgetState extends State<MapWidget> {
   @override
   void initState() {
     buildSelfBitmap().then((bitmap) => setState(() => selfMarkerBitmap = bitmap));
-    buildShopBitmap(ITColors.primary).then((bitmap) => setState(() => primaryMarkerBitmap = bitmap));
+    buildShopBitmap(ITColors.red).then((bitmap) => setState(() => primaryMarkerBitmap = bitmap));
     buildShopBitmap(Colors.blue).then((bitmap) => setState(() => choosedMarkerBitmap = bitmap));
     buildShopBitmap(Colors.red).then((bitmap) => setState(() => routeMarkerBitmap = bitmap));
     _initialCameraPosition = CameraPosition(target: center, zoom: centerZoom != null ? centerZoom : 11.1);
