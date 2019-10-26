@@ -112,15 +112,10 @@ class ShopBloc extends Bloc<ShopEvent, ShopState> {
             bounds: event.bounds,
           );
         else
-          yield currentState.copyWith(
-            shops: event.shops,
-            bounds: event.bounds,
-          );
+          yield currentState.copyWith(shops: event.shops, bounds: event.bounds);
       } else
-        yield currentState.copyWith(
-          shops: [],
-          bounds: event.bounds,
-        );
+        yield currentState.copyWith(shops: [], bounds: event.bounds);
+      yield currentState.copyWith(loadStatus: LoadStatus.loaded);
     }
     if (event is SetFilterEvent) {
       yield currentState.copyWith(filter: event?.filter);
@@ -134,7 +129,9 @@ class ShopBloc extends Bloc<ShopEvent, ShopState> {
       yield currentState.copyWith(
           findString: (event.findString ?? "").length == 0 ? null : event.findString,
           shops: shops,
-          loadStatus: LoadStatus.loaded);
+          loadStatus: LoadStatus.loaded)
+        ..shopToPreview =
+            ((event.findString ?? "").length != 0 && (shops ?? []).length == 0) ? null : currentState.shopToPreview;
     }
     // if (event is BuildRouteEvent) {
     //   yield currentState.copyWith(buildingRoute: true);

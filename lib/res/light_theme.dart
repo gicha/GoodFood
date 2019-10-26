@@ -14,7 +14,7 @@ ThemeData lightTheme = ThemeData(
       brightness: Brightness.light,
       color: ITColors.bgLight,
       iconTheme: IconThemeData(color: ITColors.text),
-      textTheme: TextTheme(title: TextStyle(color: ITColors.text, fontSize: 16, fontWeight: FontWeight.bold))),
-  textTheme: TextTheme(title: TextStyle(color: ITColors.text)),
+      textTheme: TextTheme(title: ITTextStyle(color: ITColors.text, fontSize: 16, fontWeight: FontWeight.bold))),
+  textTheme: TextTheme(title: ITTextStyle(color: ITColors.text)),
   buttonTheme: ButtonThemeData(buttonColor: ITColors.primaryDark, textTheme: ButtonTextTheme.accent),
 );

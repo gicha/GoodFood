@@ -17,48 +17,55 @@ class ShopInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 110,
       width: MediaQuery.of(context).size.width - 8,
-      padding: EdgeInsets.only(top: 24, bottom: 12, left: 24, right: 24),
+      padding: EdgeInsets.only(top: 24, bottom: 0, left: 24, right: 18),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
                 width: MediaQuery.of(context).size.width * .65,
-                child: Container(
-                  // width: MediaQuery.of(context).size.width * .6,
-                  child: AutoSizeText(
-                    '${shop.name}',
-                    maxFontSize: 16,
-                    minFontSize: 13,
-                    maxLines: 1,
-                    textAlign: TextAlign.start,
-                    style: ITTextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
+                child: AutoSizeText(
+                  '${shop.name}',
+                  maxFontSize: 18,
+                  minFontSize: 13,
+                  maxLines: 1,
+                  textAlign: TextAlign.start,
+                  style: ITTextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
+              SizedBox(height: 17),
               Container(
                 width: MediaQuery.of(context).size.width * .6,
-                child: Text(
+                child: AutoSizeText(
                   ' ${shop.address.text}',
-                  style: ITTextStyle(color: ITColors.secondaryText),
+                  maxFontSize: 16,
+                  minFontSize: 13,
+                  style: ITTextStyle(color: ITColors.text),
                   maxLines: 1,
                 ),
               ),
-              Text(calculateDistance(context), style: ITTextStyle(color: ITColors.secondaryText)),
+              Container(),
             ],
           ),
-          GestureDetector(
-            onTap: () => Utils.launchUrl('tel:${(shop.phone ?? "").length == 0 ? "+36(1)700-0020" : shop.phone}'),
-            child: Chip(
-              backgroundColor: ITColors.primary,
-              padding: EdgeInsets.all(8),
-              label: Text('CALL', style: TextStyle(color: Colors.white)),
-            ),
+          Column(
+            children: [
+              Text(calculateDistance(context), style: ITTextStyle(color: ITColors.secondaryText)),
+              SizedBox(height: 5),
+              GestureDetector(
+                onTap: () => Utils.launchUrl('tel:${(shop.phone ?? "").length == 0 ? "+36(1)700-0020" : shop.phone}'),
+                child: Chip(
+                  backgroundColor: ITColors.primary,
+                  padding: EdgeInsets.all(8),
+                  label:
+                      Text('call', style: ITTextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15)),
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -69,8 +76,8 @@ class ShopInfo extends StatelessWidget {
     double distance = Utils.calculateDistance(SelfBloc.getInstance()?.currentState?.position,
         LatLng(shop.address.coordinates.latitude, shop.address.coordinates.longitude));
     if (distance < 1)
-      return ' ${(distance * 1000).floor().toString()} ${I18n.of(context).metres} ${I18n.of(context).fromYou}';
+      return ' ${(distance * 1000).floor().toString()} ${I18n.of(context).metres}';
     else
-      return ' ${distance.toStringAsFixed(2)} ${I18n.of(context).kilometres} ${I18n.of(context).fromYou}';
+      return ' ${distance.toStringAsFixed(2)} ${I18n.of(context).kilometres}';
   }
 }

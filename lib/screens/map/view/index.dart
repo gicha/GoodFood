@@ -46,7 +46,7 @@ class _MapViewState extends State<MapView> {
           parallaxEnabled: true,
           parallaxOffset: 0.8,
           minHeight: 120,
-          maxHeight: height - 205,
+          maxHeight: height - 198,
           borderRadius: radius,
           defaultPanelState: PanelState.CLOSED,
           panel: BlocBuilder(

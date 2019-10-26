@@ -57,7 +57,7 @@ class _FindLineViewState extends State<FindLineView> {
                     child: Container(
                       width: width * .1,
                       height: width * .1,
-                      child: shopBloc.currentState.buildingRoute
+                      child: shopBloc.currentState.loadStatus == LoadStatus.loading
                           ? Container(
                               padding: EdgeInsets.all(8),
                               child: CircularProgressIndicator(
@@ -70,29 +70,6 @@ class _FindLineViewState extends State<FindLineView> {
                             ),
                     ),
                   ),
-                  // GestureDetector(
-                  //   onTap: () => Navigator.of(context).push(PageTransition(
-                  //       type: PageTransitionType.fade,
-                  //       child: FilterScreen(
-                  //         shopBloc: shopBloc,
-                  //         onChange: provider.onCameraIdle,
-                  //       ))),
-                  //   child: Container(
-                  //     width: width * .1,
-                  //     height: width * .1,
-                  //     child: shopBloc.currentState.types.length == 0
-                  //         ? Container(
-                  //             padding: EdgeInsets.all(8),
-                  //             child: CircularProgressIndicator(
-                  //               valueColor: AlwaysStoppedAnimation<Color>(ITColors.primary),
-                  //             ),
-                  //           )
-                  //         : Icon(
-                  //             LineIcons.filter,
-                  //             color: ITColors.secondaryText,
-                  //           ),
-                  //   ),
-                  // ),
                 ],
               ),
             ),

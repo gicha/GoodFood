@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:goodfood/generated/i18n.dart';
+import 'package:goodfood/res/text_style.dart';
 import 'package:goodfood/widgets/loading.dart';
 
 /// Splashscreen with loader
@@ -31,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
             margin: EdgeInsets.only(bottom: height * .2),
             child: Text(
               I18n.of(context).title,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: width * .1),
+              style: ITTextStyle(fontWeight: FontWeight.bold, fontSize: width * .1),
             ),
           ),
           ITLoading()

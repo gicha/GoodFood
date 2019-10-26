@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:goodfood/res/text_style.dart';
 import 'package:goodfood/widgets/loading.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
@@ -83,7 +84,7 @@ void startHome() async {
                 GlobalWidgetsLocalizations.delegate,
               ],
               supportedLocales: i18n.supportedLocales,
-              localeResolutionCallback: i18n.resolution(fallback: new Locale("ru", "RU")),
+              localeResolutionCallback: i18n.resolution(fallback: new Locale("en", "US")),
               home: Theme(
                 data: theme,
                 child: Builder(
@@ -127,7 +128,7 @@ void startHome() async {
                                           },
                                           child: Text(
                                             I18n.of(context).confirm,
-                                            style: TextStyle(color: Theme.of(context).primaryColor),
+                                            style: ITTextStyle(color: Theme.of(context).primaryColor),
                                           ),
                                         ),
                                         FlatButton(
