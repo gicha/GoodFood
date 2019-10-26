@@ -182,7 +182,7 @@ packages:
       name: connectivity
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.5+1"
+    version: "0.4.5+2"
   convert:
     dependency: transitive
     description:
@@ -225,13 +225,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.8"
-  dynamic_theme:
-    dependency: "direct main"
-    description:
-      name: dynamic_theme
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.1"
   encrypt:
     dependency: "direct main"
     description:
@@ -653,13 +646,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.17.2+2"
-  shared_preferences:
-    dependency: transitive
-    description:
-      name: shared_preferences
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.5.3+5"
   shelf:
     dependency: transitive
     description:
@@ -777,13 +763,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
-  swipe_stack:
-    dependency: "direct main"
-    description:
-      name: swipe_stack
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
   synchronized:
     dependency: transitive
     description:
@@ -839,7 +818,7 @@ packages:
       name: url_launcher
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.2.4"
+    version: "5.2.5"
   url_launcher_platform_interface:
     dependency: transitive
     description:

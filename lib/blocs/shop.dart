@@ -44,7 +44,7 @@ class ShopState {
   bool isRefreshed;
   String findString;
   bool buildingRoute = false;
-  LoadStatus loadStatus = LoadStatus.loading;
+  LoadStatus loadStatus = LoadStatus.loaded;
   LatLng selfLocation;
   LatLngBounds bounds;
   Map<String, LatLng> markers = Map<String, LatLng>();
@@ -74,7 +74,7 @@ class ShopState {
     LatLng finishPoint,
   }) {
     return ShopState()
-      ..shopToPreview = shopToPreview ?? this.shopToPreview
+      ..shopToPreview = shopToPreview
       ..shops = shops ?? this.shops
       ..findString = findString ?? this.findString
       ..filter = filter ?? this.filter
@@ -112,26 +112,24 @@ class ShopBloc extends Bloc<ShopEvent, ShopState> {
             bounds: event.bounds,
           );
         else
-          yield currentState.copyWith(shops: event.shops, bounds: event.bounds);
+          yield currentState.copyWith(
+              shops: event.shops, bounds: event.bounds, shopToPreview: currentState.shopToPreview);
       } else
-        yield currentState.copyWith(shops: [], bounds: event.bounds);
-      yield currentState.copyWith(loadStatus: LoadStatus.loaded);
+        yield currentState.copyWith(shops: [], bounds: event.bounds, shopToPreview: currentState.shopToPreview);
+      yield currentState.copyWith(loadStatus: LoadStatus.loaded, shopToPreview: currentState.shopToPreview);
     }
     if (event is SetFilterEvent) {
-      yield currentState.copyWith(filter: event?.filter);
+      yield currentState.copyWith(filter: event?.filter, shopToPreview: currentState.shopToPreview);
     }
     if (event is ShopPreviewEvent) yield currentState.copyWith(shopToPreview: event?.shop);
-    if (event is UpdateSelfLocationShopEvent) yield currentState.copyWith(selfLocation: event.location);
+    if (event is UpdateSelfLocationShopEvent)
+      yield currentState.copyWith(selfLocation: event.location, shopToPreview: currentState.shopToPreview);
     if (event is FindProductsEvent) {
-      yield currentState.copyWith(loadStatus: LoadStatus.loading);
+      yield currentState.copyWith(loadStatus: LoadStatus.loading, shopToPreview: currentState.shopToPreview);
       List<Shop> shops =
-          (event.findString ?? "").length == 0 ? await ShopApi.all() : await ShopApi.byTag(event.findString);
-      yield currentState.copyWith(
-          findString: (event.findString ?? "").length == 0 ? null : event.findString,
-          shops: shops,
-          loadStatus: LoadStatus.loaded)
-        ..shopToPreview =
-            ((event.findString ?? "").length != 0 && (shops ?? []).length == 0) ? null : currentState.shopToPreview;
+          (event.findString ?? "").length == 0 ? (await ShopApi.all()) : (await ShopApi.byTag(event.findString));
+      yield currentState.copyWith(shops: shops, loadStatus: LoadStatus.loaded, shopToPreview: shops.first)
+        ..findString = (event.findString ?? "").length == 0 ? null : event.findString;
     }
     // if (event is BuildRouteEvent) {
     //   yield currentState.copyWith(buildingRoute: true);
