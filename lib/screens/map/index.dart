@@ -47,11 +47,9 @@ class _MapScreenState extends State<MapScreen> with AutomaticKeepAliveClientMixi
     return BlocBuilder(
       bloc: selfBloc,
       builder: (context, SelfState state) {
-        if (state.position != null) {
-          return MapView(
-            provider: provider,
-          );
-        } else
+        if (state.position != null)
+          return MapView(provider: provider);
+        else
           return ITLoading();
       },
     );

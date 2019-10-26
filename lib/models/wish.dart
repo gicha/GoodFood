@@ -22,11 +22,11 @@ abstract class Wish implements Built<Wish, WishBuilder> {
 
   @nullable
   @BuiltValueField(wireName: 'needCount')
-  int get needCount;
+  double get needCount;
 
   @nullable
   @BuiltValueField(wireName: 'existCount')
-  int get existCount;
+  double get existCount;
 
   static Serializer<Wish> get serializer => _$wishSerializer;
 }

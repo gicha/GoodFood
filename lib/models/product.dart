@@ -26,7 +26,7 @@ abstract class Product implements Built<Product, ProductBuilder> {
 
   @nullable
   @BuiltValueField(wireName: 'count')
-  int get count;
+  double get count;
 
   static Serializer<Product> get serializer => _$productSerializer;
 }

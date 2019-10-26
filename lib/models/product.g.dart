@@ -46,7 +46,7 @@ class _$ProductSerializer implements StructuredSerializer<Product> {
       result
         ..add('count')
         ..add(serializers.serialize(object.count,
-            specifiedType: const FullType(int)));
+            specifiedType: const FullType(double)));
     }
     return result;
   }
@@ -80,7 +80,7 @@ class _$ProductSerializer implements StructuredSerializer<Product> {
           break;
         case 'count':
           result.count = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(double)) as double;
           break;
       }
     }
@@ -99,7 +99,7 @@ class _$Product extends Product {
   @override
   final DateTime date;
   @override
-  final int count;
+  final double count;
 
   factory _$Product([void Function(ProductBuilder) updates]) =>
       (new ProductBuilder()..update(updates)).build();
@@ -164,9 +164,9 @@ class ProductBuilder implements Builder<Product, ProductBuilder> {
   DateTime get date => _$this._date;
   set date(DateTime date) => _$this._date = date;
 
-  int _count;
-  int get count => _$this._count;
-  set count(int count) => _$this._count = count;
+  double _count;
+  double get count => _$this._count;
+  set count(double count) => _$this._count = count;
 
   ProductBuilder();
 

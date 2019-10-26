@@ -71,7 +71,7 @@ class ShopState {
       ..shopToPreview = shopToPreview ?? this.shopToPreview
       ..shops = shops ?? this.shops
       // ..types = types ?? this.types
-      // ..filter = filter ?? this.filter
+      ..filter = filter ?? this.filter
       ..isRefreshed = isRefreshed ?? this.isRefreshed
       ..buildingRoute = buildingRoute ?? this.buildingRoute
       ..markers = markers ?? this.markers

@@ -31,5 +31,8 @@
     "filter": "Фильтр",
     "describeYourProblem": "Опишите вашу проблему",
     "reportProblem": "Сообщить о проблеме",
-    "close": "закрыть"
+    "close": "закрыть",
+    "fromYou": "от вас",
+    "metres": "m",
+    "kilometres": "km"
    }

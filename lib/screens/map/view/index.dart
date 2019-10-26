@@ -44,7 +44,7 @@ class _MapViewState extends State<MapView> {
           controller: panelController,
           parallaxEnabled: true,
           parallaxOffset: 0.8,
-          minHeight: 192,
+          minHeight: 120,
           maxHeight: height - 208,
           borderRadius: radius,
           defaultPanelState: PanelState.CLOSED,
@@ -110,11 +110,11 @@ class _MapViewState extends State<MapView> {
                   //     margin: EdgeInsets.only(
                   //       top: 12,
                   //     ),
-                  //     child: FinLineView(provider: provider),
+                  //     child: FindLineView(provider: provider),
                   //   ),
                   // ),
                   Positioned(
-                    bottom: 310 + MediaQuery.of(context).viewPadding.bottom,
+                    bottom: 220 + MediaQuery.of(context).viewPadding.bottom,
                     right: 12,
                     child: Container(
                       margin: EdgeInsets.only(left: 8, bottom: 8),

@@ -4,7 +4,6 @@ import 'package:goodfood/models/models.dart';
 import 'package:goodfood/res/res.dart';
 import 'package:goodfood/res/text_style.dart';
 import 'package:goodfood/utils/utils.dart';
-import 'package:goodfood/widgets/image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -15,7 +14,7 @@ class ShopInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 180,
+      height: 100,
       width: MediaQuery.of(context).size.width - 8,
       padding: EdgeInsets.all(24),
       child: Column(

@@ -40,13 +40,13 @@ class _$WishSerializer implements StructuredSerializer<Wish> {
       result
         ..add('needCount')
         ..add(serializers.serialize(object.needCount,
-            specifiedType: const FullType(int)));
+            specifiedType: const FullType(double)));
     }
     if (object.existCount != null) {
       result
         ..add('existCount')
         ..add(serializers.serialize(object.existCount,
-            specifiedType: const FullType(int)));
+            specifiedType: const FullType(double)));
     }
     return result;
   }
@@ -76,11 +76,11 @@ class _$WishSerializer implements StructuredSerializer<Wish> {
           break;
         case 'needCount':
           result.needCount = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(double)) as double;
           break;
         case 'existCount':
           result.existCount = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(double)) as double;
           break;
       }
     }
@@ -97,9 +97,9 @@ class _$Wish extends Wish {
   @override
   final String date;
   @override
-  final int needCount;
+  final double needCount;
   @override
-  final int existCount;
+  final double existCount;
 
   factory _$Wish([void Function(WishBuilder) updates]) =>
       (new WishBuilder()..update(updates)).build();
@@ -160,13 +160,13 @@ class WishBuilder implements Builder<Wish, WishBuilder> {
   String get date => _$this._date;
   set date(String date) => _$this._date = date;
 
-  int _needCount;
-  int get needCount => _$this._needCount;
-  set needCount(int needCount) => _$this._needCount = needCount;
+  double _needCount;
+  double get needCount => _$this._needCount;
+  set needCount(double needCount) => _$this._needCount = needCount;
 
-  int _existCount;
-  int get existCount => _$this._existCount;
-  set existCount(int existCount) => _$this._existCount = existCount;
+  double _existCount;
+  double get existCount => _$this._existCount;
+  set existCount(double existCount) => _$this._existCount = existCount;
 
   WishBuilder();
 

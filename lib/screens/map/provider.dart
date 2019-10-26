@@ -45,10 +45,8 @@ class MapProvider {
 
   void onCameraIdle() async {
     List<Shop> shops;
-    if (lastBounds == null) {
-      lastBounds = await controller.getVisibleRegion();
-      shops = await ShopApi.all();
-    }
+    if (lastBounds == null) lastBounds = await controller.getVisibleRegion();
+    shops = await ShopApi.all();
     shopBloc.dispatch(FetchShopEvent(shops: shops, bounds: lastBounds));
   }
 
