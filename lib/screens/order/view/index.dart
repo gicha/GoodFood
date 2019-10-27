@@ -54,14 +54,17 @@ class _OrderViewState extends State<OrderView> {
                         children: [
                           if ((state.orders ?? []).length == 0) NoOrdersWidget(),
                           if ((state.orders ?? []).length != 0)
-                            ...List.generate(
-                                state.orders.length, (index) => OrderItemWidget(order: state.orders[index])),
+                            ...List.generate(state.orders.length, (index) {
+                              return state.orders[index].content.length == 0
+                                  ? Container()
+                                  : OrderItemWidget(order: state.orders[index]);
+                            }),
                           if ((state.orders ?? []).length != 0)
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Image.asset(
-                                  "assets/images/blue_human.png",
+                                  "assets/images/red_human.png",
                                   height: MediaQuery.of(context).size.height * .5,
                                   width: MediaQuery.of(context).size.width * .7,
                                 ),

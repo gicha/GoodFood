@@ -22,8 +22,8 @@ class _MainScreenState extends State<MainScreen> {
 
   List<Widget> pages = [
     MapScreen(),
-    WishScreen(),
     OrderScreen(),
+    WishScreen(),
   ];
   List<BottomNavigationBarItem> bottomItems = [
     buildBottomItem(LineIcons.map_o),

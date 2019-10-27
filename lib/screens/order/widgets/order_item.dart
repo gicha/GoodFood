@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goodfood/blocs/blocs.dart';
 import 'package:goodfood/models/models.dart';
 import 'package:goodfood/res/res.dart';
 import 'package:goodfood/res/text_style.dart';
@@ -15,20 +16,24 @@ class OrderItemWidget extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(top: 30, left: 30, right: 15, bottom: 30),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(children: [
-            Text(
-              DateFormat('EEE, MMM d').format(order.date),
-              style: ITTextStyle(
-                fontWeight: FontWeight.bold,
-                color: ITColors.text,
-                fontSize: 16,
+          Row(
+            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                DateFormat('EEE, MMM d').format(order.date),
+                style: ITTextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: ITColors.text,
+                  fontSize: 16,
+                ),
               ),
-            ),
-            order.status == "NEW" ? twoButtons(context) : qr(),
-          ]),
-          SizedBox(height: 10),
+              SizedBox(width: 30),
+              order.status == "NEW" ? twoButtons(context) : qr(),
+            ],
+          ),
+          //SizedBox(height: 10),
           ...List.generate(order.content.length, (index) => ContentItemWidget(content: order.content[index])),
         ],
       ),
@@ -41,20 +46,22 @@ class OrderItemWidget extends StatelessWidget {
         GestureDetector(
           onTap: () {},
           child: Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(shape: BoxShape.circle, color: Color(0xFF2B44FF)),
-            child: Icon(Icons.check, size: 35, color: Colors.white),
+            width: 35,
+            height: 35,
+            decoration: BoxDecoration(shape: BoxShape.circle, color: ITColors.primary),
+            child: Icon(Icons.check, size: 30, color: Colors.white),
           ),
         ),
-        SizedBox(width: MediaQuery.of(context).size.width * .2),
+        SizedBox(width: MediaQuery.of(context).size.width * .1),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            OrderBloc.getInstance().dispatch(DeleteOrderEvent(order.id));
+          },
           child: Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(shape: BoxShape.circle, color: Color(0xFF2B44FF)),
-            child: Icon(Icons.close, size: 35, color: Colors.white),
+            width: 35,
+            height: 35,
+            decoration: BoxDecoration(shape: BoxShape.circle, color: ITColors.primary),
+            child: Icon(Icons.close, size: 30, color: Colors.white),
           ),
         ),
       ],
@@ -65,10 +72,10 @@ class OrderItemWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Container(
-        width: 40,
-        height: 40,
-        decoration: BoxDecoration(shape: BoxShape.circle, color: Color(0xFF2B44FF)),
-        child: Icon(LineIcons.qrcode, size: 35, color: Colors.white),
+        width: 35,
+        height: 35,
+        decoration: BoxDecoration(shape: BoxShape.circle, color: ITColors.primary),
+        child: Icon(LineIcons.qrcode, size: 30, color: Colors.white),
       ),
     );
   }

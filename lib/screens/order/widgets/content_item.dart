@@ -3,7 +3,6 @@ import 'package:goodfood/models/models.dart';
 import 'package:goodfood/res/res.dart';
 import 'package:goodfood/res/text_style.dart';
 import 'package:goodfood/widgets/image.dart';
-import 'package:line_icons/line_icons.dart';
 
 class ContentItemWidget extends StatelessWidget {
   const ContentItemWidget({Key key, @required this.content}) : super(key: key);
@@ -12,7 +11,7 @@ class ContentItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 30, left: 30, right: 15, bottom: 30),
+      padding: EdgeInsets.only(top: 20, right: 15, bottom: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -21,32 +20,40 @@ class ContentItemWidget extends StatelessWidget {
             style: ITTextStyle(
               fontWeight: FontWeight.bold,
               color: ITColors.text,
-              fontSize: 16,
+              fontSize: 20,
             ),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 15),
           Row(
             children: [
               Container(
-                width: 60,
-                height: 60,
+                width: 80,
+                height: 80,
                 child: ITImage(content.product.image),
               ),
-              SizedBox(width: 10),
-              Column(children: [
-                Text(content.product.name,
-                    style: ITTextStyle(
-                      color: ITColors.text,
-                      fontSize: 14,
-                    )),
-                SizedBox(height: 10),
-                Text('${content.count.floor().toString()} pcs.',
-                    style: ITTextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: ITColors.text,
-                      fontSize: 16,
-                    )),
-              ]),
+              SizedBox(width: 20),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width * .55,
+                    child: Text(
+                      content.product.name,
+                      style: ITTextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: ITColors.secondaryText,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 7),
+                  Text('${content.count.floor().toString()} pcs.',
+                      style: ITTextStyle(
+                        color: ITColors.text,
+                        fontSize: 14,
+                      )),
+                ],
+              ),
             ],
           ),
         ],

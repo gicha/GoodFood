@@ -15,7 +15,7 @@ abstract class Content implements Built<Content, ContentBuilder> {
 
   @nullable
   @BuiltValueField(wireName: 'count')
-  int get count;
+  double get count;
 
   @nullable
   @BuiltValueField(wireName: 'store')

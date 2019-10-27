@@ -33,7 +33,7 @@ class SetMBSheetVisibleMainEvent extends MainEvent {
 }
 
 class MainState {
-  int page = 1;
+  int page = 0;
   bool hardChange = false;
   bool loading = false;
   bool isStoreVisible = false;

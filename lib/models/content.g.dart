@@ -28,7 +28,7 @@ class _$ContentSerializer implements StructuredSerializer<Content> {
       result
         ..add('count')
         ..add(serializers.serialize(object.count,
-            specifiedType: const FullType(int)));
+            specifiedType: const FullType(double)));
     }
     if (object.store != null) {
       result
@@ -56,7 +56,7 @@ class _$ContentSerializer implements StructuredSerializer<Content> {
           break;
         case 'count':
           result.count = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(double)) as double;
           break;
         case 'store':
           result.store = serializers.deserialize(value,
@@ -73,7 +73,7 @@ class _$Content extends Content {
   @override
   final Product product;
   @override
-  final int count;
+  final double count;
   @override
   final String store;
 
@@ -121,9 +121,9 @@ class ContentBuilder implements Builder<Content, ContentBuilder> {
   ProductBuilder get product => _$this._product ??= new ProductBuilder();
   set product(ProductBuilder product) => _$this._product = product;
 
-  int _count;
-  int get count => _$this._count;
-  set count(int count) => _$this._count = count;
+  double _count;
+  double get count => _$this._count;
+  set count(double count) => _$this._count = count;
 
   String _store;
   String get store => _$this._store;
