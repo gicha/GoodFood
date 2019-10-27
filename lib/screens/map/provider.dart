@@ -75,4 +75,6 @@ class MapProvider {
       );
     }
   }
+
+  buildRoute() => shopBloc.dispatch(BuildRouteEvent(selfBloc?.currentState?.position));
 }

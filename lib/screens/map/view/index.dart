@@ -6,6 +6,7 @@ import 'package:goodfood/screens/map/provider.dart';
 import 'package:goodfood/screens/map/widgets/find_line.dart';
 import 'package:goodfood/screens/map/widgets/location.dart';
 import 'package:goodfood/screens/map/widgets/product.dart';
+import 'package:goodfood/screens/map/widgets/route_button.dart';
 import 'package:goodfood/screens/map/widgets/shop_info.dart';
 import 'package:goodfood/widgets/loading.dart';
 import 'package:goodfood/widgets/map.dart';
@@ -115,12 +116,27 @@ class _MapViewState extends State<MapView> {
                     ),
                   ),
                   Positioned(
-                    bottom: 220 + MediaQuery.of(context).viewPadding.bottom,
+                    bottom: 280 + MediaQuery.of(context).viewPadding.bottom,
                     right: 12,
                     child: Container(
                       margin: EdgeInsets.only(left: 8, bottom: 8),
                       child: LocationWidget(
                         onTap: provider.animateToLocation,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 220 + MediaQuery.of(context).viewPadding.bottom,
+                    right: 12,
+                    child: Container(
+                      margin: EdgeInsets.only(left: 8, bottom: 8),
+                      child: RouteButton(
+                        onTap: () {
+                          if (state.route == null)
+                            provider.buildRoute();
+                          else
+                            shopBloc.dispatch(DestroyRouteEvent());
+                        },
                       ),
                     ),
                   ),

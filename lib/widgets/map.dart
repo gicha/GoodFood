@@ -63,7 +63,6 @@ class MapWidgetState extends State<MapWidget> {
     buildSelfBitmap().then((bitmap) => setState(() => selfMarkerBitmap = bitmap));
     buildShopBitmap(ITColors.red).then((bitmap) => setState(() => primaryMarkerBitmap = bitmap));
     buildShopBitmap(Colors.blue).then((bitmap) => setState(() => choosedMarkerBitmap = bitmap));
-    buildShopBitmap(Colors.red).then((bitmap) => setState(() => routeMarkerBitmap = bitmap));
     _initialCameraPosition = CameraPosition(target: center, zoom: centerZoom != null ? centerZoom : 11.1);
     super.initState();
     rootBundle.loadString(styleAsset).then((string) {
@@ -102,15 +101,14 @@ class MapWidgetState extends State<MapWidget> {
           compassEnabled: false,
           rotateGesturesEnabled: false,
           tiltGesturesEnabled: false,
-          markers: buildMarkers(
-              shopBlocState.shops, shopBlocState.routeShop, shopBlocState.finishPoint, shopBlocState.shopToPreview),
+          markers: buildMarkers(shopBlocState.shops, shopBlocState.shopToPreview),
           polylines: shopBlocState.route == null ? Set() : Set.from([shopBlocState.route]),
         );
       },
     );
   }
 
-  Set<Marker> buildMarkers(List<Shop> shops, Shop routeShop, LatLng finish, Shop previewShop) {
+  Set<Marker> buildMarkers(List<Shop> shops, Shop previewShop) {
     return [
       ...List.generate(shops.length, (index) {
         if (shops[index]?.address?.coordinates != null &&
@@ -130,18 +128,6 @@ class MapWidgetState extends State<MapWidget> {
           );
         return Marker(markerId: MarkerId(""));
       }),
-      if (routeShop?.address?.coordinates != null && choosedMarkerBitmap != null)
-        Marker(
-            markerId: MarkerId(routeShop.id.toString()),
-            consumeTapEvents: true,
-            icon: choosedMarkerBitmap,
-            position: routeShop.address.coordinates,
-            onTap: () {
-              mapController.animateCamera(CameraUpdate.newLatLngZoom(routeShop.address.coordinates, 14));
-              shopBloc.dispatch(ShopPreviewEvent(shop: routeShop));
-            }),
-      if (finish != null && routeMarkerBitmap != null)
-        Marker(markerId: MarkerId("finish"), consumeTapEvents: true, icon: routeMarkerBitmap, position: finish),
       if (previewShop?.address?.coordinates != null && choosedMarkerBitmap != null)
         Marker(
             markerId: MarkerId(previewShop.id.toString()),

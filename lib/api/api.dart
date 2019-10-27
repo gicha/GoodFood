@@ -5,8 +5,10 @@ import 'dart:math' as math;
 
 import 'package:dio/dio.dart';
 import 'package:goodfood/blocs/blocs.dart';
+import 'package:goodfood/res/res.dart';
 import 'package:goodfood/utils/config.dart';
 import 'package:flutter/foundation.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../models/serializers.dart';
 import '../models/models.dart';

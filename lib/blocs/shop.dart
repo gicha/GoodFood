@@ -30,63 +30,37 @@ class FindProductsEvent extends ShopEvent {
   FindProductsEvent(this.findString);
 }
 
-// class BuildRouteEvent extends ShopEvent {
-//   final LatLng myLocation;
-//   final String place;
-//   final LatLng latLng;
-//   BuildRouteEvent(this.myLocation, this.place, {this.latLng = null});
-// }
+class BuildRouteEvent extends ShopEvent {
+  final LatLng myLocation;
+  BuildRouteEvent(this.myLocation);
+}
+
+class DestroyRouteEvent extends ShopEvent {
+  DestroyRouteEvent();
+}
 
 class ShopState {
   Shop shopToPreview;
   List<Shop> shops = [];
-  List<String> filter = [];
-  bool isRefreshed;
   String findString;
-  bool buildingRoute = false;
   LoadStatus loadStatus = LoadStatus.loaded;
-  LatLng selfLocation;
-  LatLngBounds bounds;
-  Map<String, LatLng> markers = Map<String, LatLng>();
   Polyline route;
-  Polyline tempRoute;
-  Shop tempShop;
-  Shop routeShop;
-  LatLng finishPoint;
 
   ShopState();
 
   ShopState copyWith({
     List<Shop> shops,
-    List<String> filter,
     Shop shopToPreview,
-    bool isRefreshed,
     String findString,
-    bool buildingRoute,
-    List<String> filters,
-    Map<String, LatLng> markers,
-    Map<String, List<LatLng>> polylines,
     LoadStatus loadStatus,
-    LatLngBounds bounds,
-    LatLng selfLocation,
     Polyline route,
-    Shop routeShop,
-    LatLng finishPoint,
   }) {
     return ShopState()
-      ..shopToPreview = shopToPreview
+      ..shopToPreview = shopToPreview ?? this.shopToPreview
       ..shops = shops ?? this.shops
       ..findString = findString ?? this.findString
-      ..filter = filter ?? this.filter
-      ..isRefreshed = isRefreshed ?? this.isRefreshed
-      ..buildingRoute = buildingRoute ?? this.buildingRoute
-      ..markers = markers ?? this.markers
       ..loadStatus = loadStatus ?? this.loadStatus
-      ..bounds = bounds ?? this.bounds
-      ..selfLocation = selfLocation ?? this.selfLocation
-      ..route = route ?? this.route
-      ..routeShop = routeShop ?? this.routeShop
-      ..finishPoint = finishPoint ?? this.finishPoint;
+      ..route = route ?? this.route;
   }
 }
 
@@ -109,53 +83,44 @@ class ShopBloc extends Bloc<ShopEvent, ShopState> {
           yield currentState.copyWith(
             shopToPreview: currentState.shopToPreview ?? event.shops.first,
             shops: event.shops,
-            bounds: event.bounds,
           );
         else
-          yield currentState.copyWith(
-              shops: event.shops, bounds: event.bounds, shopToPreview: currentState.shopToPreview);
+          yield currentState.copyWith(shops: event.shops, shopToPreview: currentState.shopToPreview);
       } else
-        yield currentState.copyWith(shops: [], bounds: event.bounds, shopToPreview: currentState.shopToPreview);
+        yield currentState.copyWith(shops: [], shopToPreview: currentState.shopToPreview);
       yield currentState.copyWith(loadStatus: LoadStatus.loaded, shopToPreview: currentState.shopToPreview);
     }
-    if (event is SetFilterEvent) {
-      yield currentState.copyWith(filter: event?.filter, shopToPreview: currentState.shopToPreview);
-    }
+
     if (event is ShopPreviewEvent) yield currentState.copyWith(shopToPreview: event?.shop);
-    if (event is UpdateSelfLocationShopEvent)
-      yield currentState.copyWith(selfLocation: event.location, shopToPreview: currentState.shopToPreview);
     if (event is FindProductsEvent) {
-      yield currentState.copyWith(loadStatus: LoadStatus.loading, shopToPreview: currentState.shopToPreview);
+      yield currentState.copyWith(loadStatus: LoadStatus.loading);
       List<Shop> shops =
           (event.findString ?? "").length == 0 ? (await ShopApi.all()) : (await ShopApi.byTag(event.findString));
       yield currentState.copyWith(shops: shops, loadStatus: LoadStatus.loaded, shopToPreview: shops.first)
         ..findString = (event.findString ?? "").length == 0 ? null : event.findString;
     }
-    // if (event is BuildRouteEvent) {
-    //   yield currentState.copyWith(buildingRoute: true);
-    //   if (event.place == '' && event.latLng == null) {
-    //     yield currentState.copyWith(
-    //         route: null, finishPoint: null, routeShop: null, shopToPreview: null, buildingRoute: false);
-    //     return;
-    //   }
-    //   if (event.latLng != null) {
-    //     String address = await RouteApi.getAddress(event.latLng);
-    //     var data = await RouteApi.route(event.myLocation, address).catchError((e) {});
-    //     yield currentState.copyWith(
-    //         route: data["polyline"],
-    //         finishPoint: data["to"],
-    //         routeShop: data["shop"],
-    //         shopToPreview: data["shop"],
-    //         buildingRoute: false);
-    //     return;
-    //   }
-    //   var data = await RouteApi.route(event.myLocation, event.place).catchError((e) {});
-    //   yield currentState.copyWith(
-    //       route: data["polyline"],
-    //       finishPoint: data["to"],
-    //       routeShop: data["shop"],
-    //       shopToPreview: data["shop"],
-    //       buildingRoute: false);
-    // }
+    if (event is DestroyRouteEvent) {
+      yield ShopState()
+        ..shopToPreview = currentState.shopToPreview
+        ..shops = currentState.shops
+        ..findString = currentState.findString
+        ..loadStatus = currentState.loadStatus
+        ..route = null;
+    }
+    if (event is BuildRouteEvent) {
+      yield currentState.copyWith(
+          route: await getRoute(event.myLocation, currentState.shopToPreview.address.coordinates));
+    }
+  }
+
+  Future<Polyline> getRoute(LatLng position, LatLng shop) async {
+    List<LatLng> points = [];
+    Response<dynamic> data = await (new Dio())
+        .get(
+            "https://route.api.here.com/routing/7.2/calculateroute.json?app_id=Bq3kB3NYLmccVbOlRTeW&app_code=F9RaU4irG-_A2c2QGOCipw&waypoint0=geo!${position.latitude},${position.longitude}&waypoint1=geo!${shop.latitude},${shop.longitude}&mode=fastest;car;traffic:enabled")
+        .catchError((e) {});
+    for (var point in data.data['response']['route'][0]['leg'][0]['maneuver'])
+      points.add(LatLng(point["position"]["latitude"], point["position"]["longitude"]));
+    return Polyline(polylineId: PolylineId(""), points: points, color: ITColors.red.withOpacity(0.5), width: 9);
   }
 }

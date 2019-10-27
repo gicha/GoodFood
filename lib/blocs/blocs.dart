@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:goodfood/models/models.dart';
 import 'package:goodfood/models/serializers.dart';
@@ -12,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:goodfood/api/api.dart';
+import 'package:goodfood/res/res.dart';
 import 'package:goodfood/utils/config.dart';
 import 'package:goodfood/utils/database.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
