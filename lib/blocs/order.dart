@@ -11,6 +11,11 @@ class DeleteOrderEvent extends OrderEvent {
   DeleteOrderEvent(this.id);
 }
 
+class ConfirmOrderEvent extends OrderEvent {
+  final int id;
+  ConfirmOrderEvent(this.id);
+}
+
 class OrderState {
   List<Order> orders = [];
   LoadStatus loadStatus = LoadStatus.loaded;
@@ -48,6 +53,12 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     if (event is DeleteOrderEvent) {
       yield currentState.copyWith(loadStatus: LoadStatus.loading);
       OrderApi.delete(event.id);
+      List<Order> orderes = await OrderApi.all();
+      yield currentState.copyWith(orderes: orderes, loadStatus: LoadStatus.loaded);
+    }
+    if (event is ConfirmOrderEvent) {
+      yield currentState.copyWith(loadStatus: LoadStatus.loading);
+      OrderApi.confirm(event.id);
       List<Order> orderes = await OrderApi.all();
       yield currentState.copyWith(orderes: orderes, loadStatus: LoadStatus.loaded);
     }

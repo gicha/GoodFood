@@ -4,8 +4,11 @@ import 'package:goodfood/models/models.dart';
 import 'package:goodfood/res/res.dart';
 import 'package:goodfood/res/text_style.dart';
 import 'package:goodfood/screens/order/widgets/content_item.dart';
+import 'package:goodfood/utils/utils.dart';
 import 'package:intl/intl.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:pretty_qr_code/pretty_qr_code.dart';
+import 'package:qr/qr.dart';
 
 class OrderItemWidget extends StatelessWidget {
   const OrderItemWidget({Key key, @required this.order}) : super(key: key);
@@ -30,7 +33,7 @@ class OrderItemWidget extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 30),
-              order.status == "NEW" ? twoButtons(context) : qr(),
+              order.status == "NEW" ? twoButtons(context) : qr(context),
             ],
           ),
           //SizedBox(height: 10),
@@ -44,7 +47,9 @@ class OrderItemWidget extends StatelessWidget {
     return Row(
       children: <Widget>[
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            OrderBloc.getInstance().dispatch(ConfirmOrderEvent(order.id));
+          },
           child: Container(
             width: 35,
             height: 35,
@@ -68,9 +73,26 @@ class OrderItemWidget extends StatelessWidget {
     );
   }
 
-  Widget qr() {
+  Widget qr(context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                //title: Text("QR"),
+                content: Container(
+                  child: PrettyQr(
+                      image: AssetImage('assets/images/logo.png'),
+                      typeNumber: 3,
+                      size: 230,
+                      data: order.qr ?? "qwertyuygfdfghjhgfd",
+                      errorCorrectLevel: QrErrorCorrectLevel.M,
+                      roundEdges: true),
+                ),
+              );
+            });
+      },
       child: Container(
         width: 35,
         height: 35,

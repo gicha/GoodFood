@@ -14,4 +14,10 @@ class OrderApi {
       print(e);
     });
   }
+
+  static Future<void> confirm(id) async {
+    await Api.dio.get("/confirm/$id/").then((res) {}, onError: (e) {
+      print(e);
+    });
+  }
 }

@@ -15,7 +15,7 @@ class NoOrdersWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Text(
-            "Nothing is added\nto your wishlist yet\n:(",
+            "TODO: Nothing is added\nto your wishlist yet\n:(",
             textAlign: TextAlign.center,
             style: ITTextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: ITColors.text),
           ),
@@ -25,7 +25,7 @@ class NoOrdersWidget extends StatelessWidget {
             children: [
               SizedBox(width: MediaQuery.of(context).size.width * .1),
               Image.asset(
-                "assets/images/yellow_human.png",
+                "assets/images/red_human.png",
                 height: MediaQuery.of(context).size.height * .5,
                 width: MediaQuery.of(context).size.width * .7,
               ),

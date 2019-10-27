@@ -41,6 +41,8 @@ dependencies:
   flutter_animation_progress_bar: ^1.0.0
   flutter_form_builder: ^3.5.3
   firebase_messaging: ^5.1.6
+  pretty_qr_code: ^0.0.8
+
 
 
   built_value:
@@ -67,6 +69,7 @@ flutter:
     - assets/images/red_human.png
     - assets/images/blue_human.png
     - assets/images/pero.png
+    - assets/images/logo.png
 
   fonts:
     - family: Montserrat
