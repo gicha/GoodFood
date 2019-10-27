@@ -124,6 +124,8 @@ class I18n implements WidgetsLocalizations {
   String get amount => "Amount";
   /// "Input number"
   String get inputNumber => "Input number";
+  /// "Find good food"
+  String get findGoodFood => "Find good food";
 }
 
 class _I18n_ru_RU extends I18n {
@@ -255,18 +257,21 @@ class _I18n_ru_RU extends I18n {
   /// "Здесь вы можете заполнить\nсвой список желаний\n:)"
   @override
   String get addWish => "Здесь вы можете заполнить\nсвой список желаний\n:)";
-  /// "Product Name"
+  /// "Название продукта"
   @override
-  String get productName => "Product Name";
-  /// "Input your wish here"
+  String get productName => "Название продукта";
+  /// "Введите название сюда"
   @override
-  String get inputWishHere => "Input your wish here";
-  /// "Amount"
+  String get inputWishHere => "Введите название сюда";
+  /// "Количество"
   @override
-  String get amount => "Amount";
-  /// "Input number"
+  String get amount => "Количество";
+  /// "Введите число"
   @override
-  String get inputNumber => "Input number";
+  String get inputNumber => "Введите число";
+  /// "Найти хорошую еду"
+  @override
+  String get findGoodFood => "Найти хорошую еду";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;
@@ -420,6 +425,9 @@ class _I18n_hu_HU extends I18n {
   /// "Írja ide a számot"
   @override
   String get inputNumber => "Írja ide a számot";
+  /// "jó ételt találni"
+  @override
+  String get findGoodFood => "jó ételt találni";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

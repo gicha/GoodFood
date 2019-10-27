@@ -1,4 +1,5 @@
 import 'package:goodfood/blocs/blocs.dart';
+import 'package:goodfood/generated/i18n.dart';
 import 'package:goodfood/res/res.dart';
 import 'package:goodfood/res/text_style.dart';
 import 'package:goodfood/screens/map/provider.dart';
@@ -47,7 +48,7 @@ class _FindLineViewState extends State<FindLineView> {
                       autofocus: false,
                       decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Find good food',
+                          hintText: I18n.of(context).findGoodFood,
                           labelStyle: ITTextStyle(),
                           hintStyle: ITTextStyle(color: ITColors.secondaryText)),
                     ),

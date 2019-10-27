@@ -43,8 +43,9 @@
     "save": "сохранить",
     "leaveWithoutSave": "Вернуться без сохранения изменений?",
     "addWish": "Здесь вы можете заполнить\nсвой список желаний\n:)",
-    "productName": "Product Name",
-    "inputWishHere": "Input your wish here",
-    "amount": "Amount",
-    "inputNumber": "Input number"
+    "productName": "Название продукта",
+    "inputWishHere": "Введите название сюда",
+    "amount": "Количество",
+    "inputNumber": "Введите число",
+    "findGoodFood": "Найти хорошую еду"
    }
