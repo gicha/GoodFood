@@ -61,7 +61,6 @@ class ProductWidget extends StatelessWidget {
             secondaryActions: <Widget>[
               IconSlideAction(
                 closeOnTap: false,
-
                 iconWidget: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -70,27 +69,21 @@ class ProductWidget extends StatelessWidget {
                           .dispatch(EditProductWishEvent(product.name, (state.productWishes[product.name] ?? 0) - 1)),
                       child: Container(
                           // padding: EdgeInsets.symmetric(vertical: 30, horizontal: 15),
-                          child: Text("-", style: ITTextStyle(fontSize: 50, color: ITColors.secondaryText))),
+                          child: Text("-", style: ITTextStyle(fontSize: 50, color: ITColors.bg))),
                     ),
                     SizedBox(width: 5),
                     Text(' ${state.productWishes[product.name] ?? 0} ',
                         style: ITTextStyle(color: Colors.white, fontSize: 25)),
                     SizedBox(width: 5),
                     GestureDetector(
-                      onTap: () {
-                        WishBloc.getInstance()
-                            .dispatch(EditProductWishEvent(product.name, (state.productWishes[product.name] ?? 0) + 1));
-                      },
-                      child: Container(
-                        child: Text("+", style: ITTextStyle(fontSize: 40, color: ITColors.secondaryText)),
-                      ),
-                    ),
+                        onTap: () {
+                          WishBloc.getInstance().dispatch(
+                              EditProductWishEvent(product.name, (state.productWishes[product.name] ?? 0) + 1));
+                        },
+                        child: Text("+", style: ITTextStyle(fontSize: 40, color: ITColors.bg))),
                   ],
                 ),
-                // caption: 'Add',
                 color: ITColors.primary,
-                // icon: Icons.add,
-                onTap: () => () {},
               ),
               // IconSlideAction(
               //   caption: 'Delete',

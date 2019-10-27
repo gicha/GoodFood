@@ -1,6 +1,4 @@
-import 'package:animator/animator.dart';
 import 'package:goodfood/blocs/blocs.dart';
-import 'package:goodfood/models/models.dart';
 import 'package:goodfood/res/res.dart';
 import 'package:goodfood/screens/map/provider.dart';
 import 'package:goodfood/screens/map/widgets/find_line.dart';
@@ -12,8 +10,6 @@ import 'package:goodfood/widgets/loading.dart';
 import 'package:goodfood/widgets/map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class MapView extends StatefulWidget {

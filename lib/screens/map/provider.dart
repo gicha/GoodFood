@@ -22,13 +22,6 @@ class MapProvider {
   LatLngBounds lastBounds;
   CameraPosition lastPosition;
 
-  // initFilter() async {
-  //   List<Shop> shops = await ShopApi.all();
-  //   shopBloc.dispatch(
-  //     SetTypesEvent(types),
-  //   );
-  // }
-
   subscribeOnLocation(StreamSubscription locationSubscr) {
     locationSubscr = ln.Location().onLocationChanged().listen((ln.LocationData currentLocation) {
       selfBloc.dispatch(
@@ -70,7 +63,7 @@ class MapProvider {
     } else {
       controller.animateCamera(
         CameraUpdate.newCameraPosition(
-          CameraPosition(target: selfBloc?.currentState?.position, zoom: 15.1),
+          CameraPosition(target: selfBloc?.currentState?.position, zoom: 13.0),
         ),
       );
     }

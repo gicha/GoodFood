@@ -105,6 +105,10 @@ class I18n implements WidgetsLocalizations {
   String get metres => "м";
   /// "км"
   String get kilometres => "км";
+  /// "Заказы"
+  String get orders => "Заказы";
+  /// "Заказов пока нет"
+  String get withoutOrders => "Заказов пока нет";
 }
 
 class _I18n_ru_RU extends I18n {
@@ -120,9 +124,9 @@ class _I18n_en_US extends I18n {
   /// "Wait please, loading..."
   @override
   String get loading => "Wait please, loading...";
-  /// "Goodfood"
+  /// "GoodFood"
   @override
-  String get title => "Goodfood";
+  String get title => "GoodFood";
   /// "Title is undefined"
   @override
   String get noTitle => "Title is undefined";
@@ -132,12 +136,12 @@ class _I18n_en_US extends I18n {
   /// "Location is undefined"
   @override
   String get noLocation => "Location is undefined";
-  /// "Подождите, мы определяем ваше местоположение"
+  /// "Wait a few seconds, we're trying to get your location"
   @override
-  String get findLocation => "Подождите, мы определяем ваше местоположение";
-  /// "Для корректной работы, приложению нужен доступ к вашей геопозиции"
+  String get findLocation => "Wait a few seconds, we're trying to get your location";
+  /// "Turn on the location. This way an app will work best"
   @override
-  String get needLocation => "Для корректной работы, приложению нужен доступ к вашей геопозиции";
+  String get needLocation => "Turn on the location. This way an app will work best";
   /// "Confirm"
   @override
   String get confirm => "Confirm";
@@ -147,9 +151,9 @@ class _I18n_en_US extends I18n {
   /// "Построить ближайший маршрут через контейнер?"
   @override
   String get toNearestStore => "Построить ближайший маршрут через контейнер?";
-  /// "Неправильный email или пароль"
+  /// "Wrong email or password"
   @override
-  String get wrongLoginOrPassword => "Неправильный email или пароль";
+  String get wrongLoginOrPassword => "Wrong email or password";
   /// "History"
   @override
   String get history => "History";
@@ -159,12 +163,12 @@ class _I18n_en_US extends I18n {
   /// "Password"
   @override
   String get password => "Password";
-  /// "Re enter password"
+  /// "Re-enter the password"
   @override
-  String get rePassword => "Re enter password";
-  /// "Passwords doesn't match"
+  String get rePassword => "Re-enter the password";
+  /// "Passwords don't match"
   @override
-  String get passwordDoesntMatch => "Passwords doesn't match";
+  String get passwordDoesntMatch => "Passwords don't match";
   /// "Name"
   @override
   String get name => "Name";
@@ -177,39 +181,39 @@ class _I18n_en_US extends I18n {
   /// "Register"
   @override
   String get registration => "Register";
-  /// "Read QR"
+  /// "Read the QR"
   @override
-  String get readQR => "Read QR";
+  String get readQR => "Read the QR";
   /// "Feedback"
   @override
   String get feedback => "Feedback";
-  /// "Dont have account? "
+  /// "Don't have an account? "
   @override
-  String get notHaveAccount => "Dont have account? ";
-  /// "Already have accout?"
+  String get notHaveAccount => "Don't have an account? ";
+  /// "Already have an account?"
   @override
-  String get haveAccount => "Already have accout?";
-  /// "Вход по логину"
+  String get haveAccount => "Already have an account?";
+  /// "Entrance with login"
   @override
-  String get entranceWithLogin => "Вход по логину";
-  /// "Отсутствует подключение к интернету. Проверьте соединение"
+  String get entranceWithLogin => "Entrance with login";
+  /// "No connection to the Internet"
   @override
-  String get networkError => "Отсутствует подключение к интернету. Проверьте соединение";
-  /// "Отправить"
+  String get networkError => "No connection to the Internet";
+  /// "Send"
   @override
-  String get send => "Отправить";
+  String get send => "Send";
   /// "Filter"
   @override
   String get filter => "Filter";
-  /// "Опишите вашу проблему"
+  /// "Describe your problem"
   @override
-  String get describeYourProblem => "Опишите вашу проблему";
-  /// "Сообщить о проблеме"
+  String get describeYourProblem => "Describe your problem";
+  /// "Report a problem"
   @override
-  String get reportProblem => "Сообщить о проблеме";
-  /// "закрыть"
+  String get reportProblem => "Report a problem";
+  /// "close"
   @override
-  String get close => "закрыть";
+  String get close => "close";
   /// "from you"
   @override
   String get fromYou => "from you";
@@ -219,6 +223,12 @@ class _I18n_en_US extends I18n {
   /// "km"
   @override
   String get kilometres => "km";
+  /// "Orders"
+  @override
+  String get orders => "Orders";
+  /// "TODO: Nothing is added\nto your wishlist yet\n:("
+  @override
+  String get withoutOrders => "TODO: Nothing is added\nto your wishlist yet\n:(";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

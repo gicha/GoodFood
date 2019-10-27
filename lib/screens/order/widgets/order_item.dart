@@ -4,7 +4,6 @@ import 'package:goodfood/models/models.dart';
 import 'package:goodfood/res/res.dart';
 import 'package:goodfood/res/text_style.dart';
 import 'package:goodfood/screens/order/widgets/content_item.dart';
-import 'package:goodfood/utils/utils.dart';
 import 'package:intl/intl.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';

@@ -61,7 +61,7 @@ class WishItemWidget extends StatelessWidget {
           caption: 'Delete',
           color: ITColors.red,
           icon: Icons.delete,
-          closeOnTap: false,
+          closeOnTap: true,
           onTap: () async {
             await WishApi.delete(wish.id);
             WishBloc.getInstance().dispatch(FetchWishEvent());

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goodfood/generated/i18n.dart';
 import 'package:goodfood/res/res.dart';
 import 'package:goodfood/res/text_style.dart';
 
@@ -23,7 +24,7 @@ class OrderAppBarWidget extends StatelessWidget {
           Container(
             padding: EdgeInsets.only(bottom: 7),
             child: Text(
-              "Orders",
+              I18n.of(context).orders,
               style: ITTextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
           ),

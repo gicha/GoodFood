@@ -32,7 +32,7 @@ class SelfBloc extends Bloc<SelfEvent, SelfState> {
       if (!premission) await ln.Location().requestPermission();
       ln.LocationData location = await ln.Location().getLocation().catchError(
             (onError) => NotificationBloc.getInstance().dispatch(
-              NotificationEvent('Не удалось определить местоположение'),
+              NotificationEvent('Cannot get the location'),
             ),
           );
       yield SelfState(position: LatLng(location.latitude, location.longitude));

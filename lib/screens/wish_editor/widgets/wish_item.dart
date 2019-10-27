@@ -27,7 +27,6 @@ class WishItemWidget extends StatelessWidget {
             child: FormBuilder(
               onWillPop: () async => true,
               onChanged: (input) {
-                print([input["name"], input["count"].toString()]);
                 WishBloc.getInstance().dispatch(EditWishEvent(page, input["name"], input["count"]));
               },
               autovalidate: true,

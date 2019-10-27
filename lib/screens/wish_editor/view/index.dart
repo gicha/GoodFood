@@ -41,26 +41,29 @@ class _WishEditorViewState extends State<WishEditorView> {
                         if (state.newWishes.length == 0) NoWishesWidget(),
                         ...List.generate(state.newWishes.length, (index) => WishItemWidget(page: index)),
                         SizedBox(height: 10),
-                        Row(children: [
-                          SizedBox(width: 20),
-                          GestureDetector(
-                            onTap: () => wishBloc.dispatch(AddWishEvent()),
-                            child: Container(
-                              margin: EdgeInsets.only(bottom: 7),
-                              width: 40,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0xFF2B44FF),
-                              ),
-                              child: Icon(
-                                Icons.add,
-                                size: 35,
-                                color: Colors.white,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            GestureDetector(
+                              onTap: () => wishBloc.dispatch(AddWishEvent()),
+                              child: Container(
+                                margin: EdgeInsets.only(bottom: 7),
+                                width: 40,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color(0xFF2B44FF),
+                                ),
+                                child: Icon(
+                                  Icons.add,
+                                  size: 35,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
-                          ),
-                        ]),
+                            SizedBox(width: 20),
+                          ],
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [

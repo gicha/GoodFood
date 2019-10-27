@@ -22,20 +22,24 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).scaffoldBackgroundColor,
+      color: Color(0xff2E3192),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
+          Image.asset(
+            "assets/images/white_logo.png",
+            height: MediaQuery.of(context).size.height * .2,
+            width: MediaQuery.of(context).size.width * .3,
+          ),
           Container(
-            margin: EdgeInsets.only(bottom: height * .2),
             child: Text(
               I18n.of(context).title,
-              style: ITTextStyle(fontWeight: FontWeight.bold, fontSize: width * .1),
+              style: ITTextStyle(fontWeight: FontWeight.normal, fontSize: width * .08, color: Colors.white),
             ),
           ),
-          ITLoading()
+          // ITLoading(color: Colors.white)
         ],
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goodfood/generated/i18n.dart';
 import 'package:goodfood/res/res.dart';
 import 'package:goodfood/res/text_style.dart';
 
@@ -15,7 +16,7 @@ class NoOrdersWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Text(
-            "TODO: Nothing is added\nto your wishlist yet\n:(",
+            I18n.of(context).withoutOrders,
             textAlign: TextAlign.center,
             style: ITTextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: ITColors.text),
           ),

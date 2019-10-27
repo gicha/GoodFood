@@ -34,5 +34,7 @@
     "close": "закрыть",
     "fromYou": "от вас",
     "metres": "м",
-    "kilometres": "км"
+    "kilometres": "км",
+    "orders": "Заказы",
+    "withoutOrders": "Заказов пока нет"
    }

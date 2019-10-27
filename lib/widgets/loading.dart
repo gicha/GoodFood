@@ -22,9 +22,10 @@ import 'package:goodfood/res/text_style.dart';
 /// ```
 /// {@category Widgets}
 class ITLoading extends StatelessWidget {
-  const ITLoading({Key key, this.text, this.widget}) : super(key: key);
+  const ITLoading({Key key, this.text, this.widget, this.color = ITColors.primary}) : super(key: key);
   final Text text;
   final Widget widget;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -42,13 +43,13 @@ class ITLoading extends StatelessWidget {
                 else
                   SpinKitChasingDots(
                     size: 64,
-                    color: ITColors.primary,
+                    color: color,
                   ),
                 Container(
                   margin: EdgeInsets.only(top: 24),
                   child: Text(
                     text ?? I18n.of(context).loading,
-                    style: ITTextStyle(fontSize: 12, color: ITColors.primary),
+                    style: ITTextStyle(fontSize: 12, color: color),
                   ),
                 )
               ],

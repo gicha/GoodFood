@@ -29,9 +29,9 @@ class InitBloc extends Bloc<InitEvent, InitState> {
         debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
       await init();
       WishBloc.getInstance().dispatch(FetchWishEvent());
+      OrderBloc.getInstance().dispatch(FetchOrderEvent());
       fcm();
-      // rootBundle.loadString('assets/map/style.txt');
-      sleep(const Duration(seconds: 1, milliseconds: 500));
+      sleep(const Duration(seconds: 2));
       yield InitState.noUser;
     }
     if (event is ForceInitEvent) yield InitState.inited;

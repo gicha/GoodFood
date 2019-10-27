@@ -121,6 +121,6 @@ class ShopBloc extends Bloc<ShopEvent, ShopState> {
         .catchError((e) {});
     for (var point in data.data['response']['route'][0]['leg'][0]['maneuver'])
       points.add(LatLng(point["position"]["latitude"], point["position"]["longitude"]));
-    return Polyline(polylineId: PolylineId(""), points: points, color: ITColors.red.withOpacity(0.5), width: 9);
+    return Polyline(polylineId: PolylineId(""), points: points, color: ITColors.primary.withOpacity(0.8), width: 7);
   }
 }

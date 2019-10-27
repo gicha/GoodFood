@@ -89,15 +89,6 @@ class MapWidgetState extends State<MapWidget> {
             _controller.setMapStyle(_mapStyle);
             if (onMapCreate != null) onMapCreate(_controller);
           },
-          // onLongPress: (LatLng aimLocation) {
-          //   if (selfPosition.latitude != null) {
-          //     dialogBloc.dispatch(OpenDialogEvent(
-          //         confirm: () => shopBloc.dispatch(
-          //             BuildRouteEvent(LatLng(selfPosition.latitude, selfPosition.longitude), '', latLng: aimLocation)),
-          //         text: I18n.of(context).toNearestShop));
-          //   } else
-          //     notificationBloc.dispatch(NotificationEvent(I18n.of(context).findLocation));
-          // },
           compassEnabled: false,
           rotateGesturesEnabled: false,
           tiltGesturesEnabled: false,
@@ -112,7 +103,7 @@ class MapWidgetState extends State<MapWidget> {
     return [
       ...List.generate(shops.length, (index) {
         if (shops[index]?.address?.coordinates != null &&
-            shops[index]?.products?.length != 0 &&
+            shops[index].products.length != 0 &&
             primaryMarkerBitmap != null)
           return Marker(
             markerId: MarkerId(shops[index].id.toString()),
