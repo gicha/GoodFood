@@ -36,8 +36,8 @@ class WishItemWidget extends StatelessWidget {
                   FormBuilderTextField(
                     attribute: "name",
                     decoration: InputDecoration(
-                      labelText: "Product Name",
-                      hintText: "Input your wish here",
+                      labelText: I18n.of(context).productName,
+                      hintText: I18n.of(context).inputWishHere,
                       border: InputBorder.none,
                       labelStyle: ITTextStyle(fontSize: 22),
                     ),
@@ -48,8 +48,8 @@ class WishItemWidget extends StatelessWidget {
                   FormBuilderTextField(
                     attribute: "count",
                     decoration: InputDecoration(
-                      labelText: "Amount",
-                      hintText: "Input number",
+                      labelText: I18n.of(context).amount,
+                      hintText: I18n.of(context).inputNumber,
                       border: InputBorder.none,
                       labelStyle: ITTextStyle(fontSize: 22),
                     ),

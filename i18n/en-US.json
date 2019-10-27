@@ -40,5 +40,9 @@
     "delete": "Delete",
     "save": "save",
     "leaveWithoutSave": "Leave unsaved?",
-    "addWish": "Here you can add\n your wishlist\n:)"
+    "addWish": "Here you can add\n your wishlist\n:)",
+    "productName": "Product Name",
+    "inputWishHere": "Input your wish here",
+    "amount": "Amount",
+    "inputNumber": "Input number"
 }

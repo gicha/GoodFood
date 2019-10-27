@@ -42,5 +42,9 @@
     "delete": "Удалить",
     "save": "сохранить",
     "leaveWithoutSave": "Вернуться без сохранения изменений?",
-    "addWish": "Здесь вы можете заполнить\nсвой список желаний\n:)"
+    "addWish": "Здесь вы можете заполнить\nсвой список желаний\n:)",
+    "productName": "Product Name",
+    "inputWishHere": "Input your wish here",
+    "amount": "Amount",
+    "inputNumber": "Input number"
    }

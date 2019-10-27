@@ -1,14 +1,16 @@
 {
-    "defaultLocale": "ru-RU",
+    "defaultLocale": "en-US",
     "locales": [
         "ru-RU",
-        "en-US"
+        "en-US",
+        "hu-HU"
     ],
     "localePath": "i18n",
     "generatedPath": "lib/generated",
     "ltr": [
         "ru-RU",
-        "en-US"
+        "en-US",
+        "hu-HU"
     ],
     "rtl": []
 }
