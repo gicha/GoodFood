@@ -78,17 +78,19 @@ class ShopBloc extends Bloc<ShopEvent, ShopState> {
   @override
   Stream<ShopState> mapEventToState(ShopEvent event) async* {
     if (event is FetchShopEvent) {
-      if (event.shops != null && event.shops.length > 0) {
+      List<Shop> shops = [];
+      for (Shop shop in event.shops) if (shop.products.length != 0) shops.add(shop);
+      if (shops != null && shops.length > 0) {
         if (currentState.shopToPreview == null)
           yield currentState.copyWith(
-            shopToPreview: currentState.shopToPreview ?? event.shops.first,
-            shops: event.shops,
+            shopToPreview: currentState.shopToPreview ?? shops.first,
+            shops: shops,
           );
         else
-          yield currentState.copyWith(shops: event.shops, shopToPreview: currentState.shopToPreview);
+          yield currentState.copyWith(shops: shops);
       } else
-        yield currentState.copyWith(shops: [], shopToPreview: currentState.shopToPreview);
-      yield currentState.copyWith(loadStatus: LoadStatus.loaded, shopToPreview: currentState.shopToPreview);
+        yield currentState.copyWith(shops: []);
+      yield currentState.copyWith(loadStatus: LoadStatus.loaded);
     }
 
     if (event is ShopPreviewEvent) yield currentState.copyWith(shopToPreview: event?.shop);

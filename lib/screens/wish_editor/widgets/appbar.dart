@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goodfood/blocs/blocs.dart';
+import 'package:goodfood/generated/i18n.dart';
 import 'package:goodfood/res/res.dart';
 import 'package:goodfood/res/text_style.dart';
 
@@ -29,13 +30,13 @@ class WishAppBarWidget extends StatelessWidget {
                       WishBloc.getInstance().dispatch(ClearWishEvent());
                       Navigator.pop(context);
                     },
-                    text: "Leave unsaved?"),
+                    text: I18n.of(context).leaveWithoutSave),
               );
             },
             child: Container(
               padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * .05),
               child: Text(
-                "cancel",
+                I18n.of(context).cancel.toLowerCase(),
                 style: ITTextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
@@ -58,7 +59,7 @@ class WishAppBarWidget extends StatelessWidget {
                             ),
                           )
                         : Text(
-                            "save",
+                            I18n.of(context).save.toLowerCase(),
                             style: ITTextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                   ),

@@ -1,6 +1,5 @@
 import 'dart:ui' as ui;
 
-import 'package:goodfood/generated/i18n.dart';
 import 'package:goodfood/blocs/blocs.dart';
 import 'package:goodfood/models/models.dart';
 import 'package:goodfood/res/res.dart';
@@ -62,7 +61,7 @@ class MapWidgetState extends State<MapWidget> {
   void initState() {
     buildSelfBitmap().then((bitmap) => setState(() => selfMarkerBitmap = bitmap));
     buildShopBitmap(ITColors.red).then((bitmap) => setState(() => primaryMarkerBitmap = bitmap));
-    buildShopBitmap(Colors.blue).then((bitmap) => setState(() => choosedMarkerBitmap = bitmap));
+    buildShopBitmap(ITColors.primary).then((bitmap) => setState(() => choosedMarkerBitmap = bitmap));
     _initialCameraPosition = CameraPosition(target: center, zoom: centerZoom != null ? centerZoom : 11.1);
     super.initState();
     rootBundle.loadString(styleAsset).then((string) {

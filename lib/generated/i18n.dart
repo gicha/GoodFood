@@ -109,6 +109,18 @@ class I18n implements WidgetsLocalizations {
   String get orders => "Заказы";
   /// "Заказов пока нет"
   String get withoutOrders => "Заказов пока нет";
+  /// "Список пожеланий"
+  String get wishlist => "Список пожеланий";
+  /// "Пока что ваш\nсписок пуст\n:("
+  String get withoutWishes => "Пока что ваш\nсписок пуст\n:(";
+  /// "Удалить"
+  String get delete => "Удалить";
+  /// "сохранить"
+  String get save => "сохранить";
+  /// "Вернуться без сохранения изменений?"
+  String get leaveWithoutSave => "Вернуться без сохранения изменений?";
+  /// "Здесь вы можете заполнить\nсвой список желаний\n:)"
+  String get addWish => "Здесь вы можете заполнить\nсвой список желаний\n:)";
 }
 
 class _I18n_ru_RU extends I18n {
@@ -226,9 +238,27 @@ class _I18n_en_US extends I18n {
   /// "Orders"
   @override
   String get orders => "Orders";
-  /// "TODO: Nothing is added\nto your wishlist yet\n:("
+  /// "Seems your cart\nis empty\n:("
   @override
-  String get withoutOrders => "TODO: Nothing is added\nto your wishlist yet\n:(";
+  String get withoutOrders => "Seems your cart\nis empty\n:(";
+  /// "Wishlist"
+  @override
+  String get wishlist => "Wishlist";
+  /// "Nothing is added\nto your wishlist yet\n:("
+  @override
+  String get withoutWishes => "Nothing is added\nto your wishlist yet\n:(";
+  /// "Delete"
+  @override
+  String get delete => "Delete";
+  /// "save"
+  @override
+  String get save => "save";
+  /// "Leave unsaved?"
+  @override
+  String get leaveWithoutSave => "Leave unsaved?";
+  /// "Here you can add\n your wishlist\n:)"
+  @override
+  String get addWish => "Here you can add\n your wishlist\n:)";
 
   @override
   TextDirection get textDirection => TextDirection.ltr;

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goodfood/generated/i18n.dart';
 import 'package:goodfood/res/res.dart';
 import 'package:goodfood/res/text_style.dart';
 import 'package:goodfood/screens/wish_editor/index.dart';
@@ -26,7 +27,7 @@ class WishAppBarWidget extends StatelessWidget {
           Container(
             padding: EdgeInsets.only(bottom: 7),
             child: Text(
-              "Wishlist",
+              I18n.of(context).wishlist,
               style: ITTextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
           ),

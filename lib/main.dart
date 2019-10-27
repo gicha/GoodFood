@@ -77,7 +77,7 @@ void startHome() async {
               builder: (context) {
                 ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
                   return Center(
-                    child: Text("Ошибка: ${errorDetails.exception}"),
+                    child: Text("Error: ${errorDetails.exception}"),
                   );
                 };
                 return MultiBlocListener(

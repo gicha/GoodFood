@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:goodfood/api/api.dart';
 import 'package:goodfood/blocs/blocs.dart';
+import 'package:goodfood/generated/i18n.dart';
 import 'package:goodfood/models/models.dart';
 import 'package:goodfood/res/res.dart';
 import 'package:goodfood/res/text_style.dart';
@@ -58,7 +59,7 @@ class WishItemWidget extends StatelessWidget {
       ),
       secondaryActions: <Widget>[
         IconSlideAction(
-          caption: 'Delete',
+          caption: I18n.of(context).delete,
           color: ITColors.red,
           icon: Icons.delete,
           closeOnTap: true,

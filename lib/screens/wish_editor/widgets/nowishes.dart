@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goodfood/generated/i18n.dart';
 import 'package:goodfood/res/res.dart';
 import 'package:goodfood/res/text_style.dart';
 
@@ -13,7 +14,7 @@ class NoWishesWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            "Here you can add\n your wishlist\n:)",
+            I18n.of(context).addWish,
             textAlign: TextAlign.center,
             style: ITTextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: ITColors.text),
           ),

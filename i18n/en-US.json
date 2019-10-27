@@ -34,5 +34,11 @@
     "metres": "m",
     "kilometres": "km",
     "orders": "Orders",
-    "withoutOrders": "TODO: Nothing is added\nto your wishlist yet\n:("
-    }
+    "withoutOrders": "Seems your cart\nis empty\n:(",
+    "wishlist": "Wishlist",
+    "withoutWishes": "Nothing is added\nto your wishlist yet\n:(",
+    "delete": "Delete",
+    "save": "save",
+    "leaveWithoutSave": "Leave unsaved?",
+    "addWish": "Here you can add\n your wishlist\n:)"
+}
