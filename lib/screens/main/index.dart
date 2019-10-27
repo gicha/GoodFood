@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goodfood/screens/main/blocs/index.dart';
 import 'package:goodfood/screens/map/index.dart';
+import 'package:goodfood/screens/order/index.dart';
 import 'package:goodfood/screens/wish/index.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -20,13 +21,13 @@ class _MainScreenState extends State<MainScreen> {
   PageController pageController;
 
   List<Widget> pages = [
-    WishScreen(),
     MapScreen(),
-    Container(),
+    WishScreen(),
+    OrderScreen(),
   ];
   List<BottomNavigationBarItem> bottomItems = [
-    buildBottomItem(LineIcons.question_circle),
     buildBottomItem(LineIcons.map_o),
+    buildBottomItem(LineIcons.list),
     buildBottomItem(LineIcons.info_circle),
   ];
 

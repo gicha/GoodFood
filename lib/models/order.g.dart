@@ -22,19 +22,20 @@ class _$OrderSerializer implements StructuredSerializer<Order> {
       result
         ..add('id')
         ..add(serializers.serialize(object.id,
-            specifiedType: const FullType(String)));
+            specifiedType: const FullType(int)));
     }
     if (object.content != null) {
       result
         ..add('content')
         ..add(serializers.serialize(object.content,
-            specifiedType: const FullType(Content)));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(Content)])));
     }
     if (object.date != null) {
       result
         ..add('date')
         ..add(serializers.serialize(object.date,
-            specifiedType: const FullType(String)));
+            specifiedType: const FullType(DateTime)));
     }
     if (object.qr != null) {
       result
@@ -46,7 +47,7 @@ class _$OrderSerializer implements StructuredSerializer<Order> {
       result
         ..add('status')
         ..add(serializers.serialize(object.status,
-            specifiedType: const FullType(bool)));
+            specifiedType: const FullType(String)));
     }
     return result;
   }
@@ -64,15 +65,17 @@ class _$OrderSerializer implements StructuredSerializer<Order> {
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(int)) as int;
           break;
         case 'content':
           result.content.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Content)) as Content);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(Content)]))
+              as BuiltList<dynamic>);
           break;
         case 'date':
           result.date = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(DateTime)) as DateTime;
           break;
         case 'qr':
           result.qr = serializers.deserialize(value,
@@ -80,7 +83,7 @@ class _$OrderSerializer implements StructuredSerializer<Order> {
           break;
         case 'status':
           result.status = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(String)) as String;
           break;
       }
     }
@@ -91,15 +94,15 @@ class _$OrderSerializer implements StructuredSerializer<Order> {
 
 class _$Order extends Order {
   @override
-  final String id;
+  final int id;
   @override
-  final Content content;
+  final BuiltList<Content> content;
   @override
-  final String date;
+  final DateTime date;
   @override
   final String qr;
   @override
-  final bool status;
+  final String status;
 
   factory _$Order([void Function(OrderBuilder) updates]) =>
       (new OrderBuilder()..update(updates)).build();
@@ -148,25 +151,26 @@ class _$Order extends Order {
 class OrderBuilder implements Builder<Order, OrderBuilder> {
   _$Order _$v;
 
-  String _id;
-  String get id => _$this._id;
-  set id(String id) => _$this._id = id;
+  int _id;
+  int get id => _$this._id;
+  set id(int id) => _$this._id = id;
 
-  ContentBuilder _content;
-  ContentBuilder get content => _$this._content ??= new ContentBuilder();
-  set content(ContentBuilder content) => _$this._content = content;
+  ListBuilder<Content> _content;
+  ListBuilder<Content> get content =>
+      _$this._content ??= new ListBuilder<Content>();
+  set content(ListBuilder<Content> content) => _$this._content = content;
 
-  String _date;
-  String get date => _$this._date;
-  set date(String date) => _$this._date = date;
+  DateTime _date;
+  DateTime get date => _$this._date;
+  set date(DateTime date) => _$this._date = date;
 
   String _qr;
   String get qr => _$this._qr;
   set qr(String qr) => _$this._qr = qr;
 
-  bool _status;
-  bool get status => _$this._status;
-  set status(bool status) => _$this._status = status;
+  String _status;
+  String get status => _$this._status;
+  set status(String status) => _$this._status = status;
 
   OrderBuilder();
 

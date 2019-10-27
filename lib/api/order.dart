@@ -14,10 +14,4 @@ class OrderApi {
       print(e);
     });
   }
-
-  static Future<void> add(String name, String count) async {
-    await Api.dio.get("/add_order/$name/${count.toString()}/").then((res) {}, onError: (e) {
-      print(e);
-    });
-  }
 }

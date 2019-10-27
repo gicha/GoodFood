@@ -1,3 +1,4 @@
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:goodfood/models/models.dart';
@@ -11,15 +12,15 @@ abstract class Order implements Built<Order, OrderBuilder> {
 
   @nullable
   @BuiltValueField(wireName: 'id')
-  String get id;
+  int get id;
 
   @nullable
   @BuiltValueField(wireName: 'content')
-  Content get content;
+  BuiltList<Content> get content;
 
   @nullable
   @BuiltValueField(wireName: 'date')
-  String get date;
+  DateTime get date;
 
   @nullable
   @BuiltValueField(wireName: 'qr')
@@ -27,7 +28,7 @@ abstract class Order implements Built<Order, OrderBuilder> {
 
   @nullable
   @BuiltValueField(wireName: 'status')
-  bool get status;
+  String get status;
 
   static Serializer<Order> get serializer => _$orderSerializer;
 }
