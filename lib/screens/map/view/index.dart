@@ -44,6 +44,7 @@ class _MapViewState extends State<MapView> {
       child: SafeArea(
         child: SlidingUpPanel(
           controller: panelController,
+          onPanelClosed: () => WishBloc.getInstance().dispatch(ConfirmWishEvent()),
           parallaxEnabled: true,
           parallaxOffset: 0.8,
           minHeight: 130,

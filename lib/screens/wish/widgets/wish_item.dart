@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:goodfood/api/api.dart';
@@ -25,8 +26,15 @@ class WishItemWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(wish.category,
-                    style: ITTextStyle(fontWeight: FontWeight.bold, color: ITColors.text, fontSize: 16)),
+                Container(
+                  width: MediaQuery.of(context).size.width * .4,
+                  child: AutoSizeText(
+                    wish.category,
+                    style: ITTextStyle(fontWeight: FontWeight.bold, color: ITColors.text, fontSize: 16),
+                    minFontSize: 13,
+                    maxFontSize: 16,
+                  ),
+                ),
                 SizedBox(height: 10),
                 Text('${wish.needCount.floor().toString()} pcs.',
                     style: ITTextStyle(color: ITColors.text, fontSize: 14)),
