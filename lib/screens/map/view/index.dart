@@ -46,7 +46,7 @@ class _MapViewState extends State<MapView> {
           controller: panelController,
           parallaxEnabled: true,
           parallaxOffset: 0.8,
-          minHeight: 120,
+          minHeight: 130,
           maxHeight: height - 198,
           borderRadius: radius,
           defaultPanelState: PanelState.CLOSED,

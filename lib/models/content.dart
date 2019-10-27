@@ -17,5 +17,9 @@ abstract class Content implements Built<Content, ContentBuilder> {
   @BuiltValueField(wireName: 'count')
   int get count;
 
+  @nullable
+  @BuiltValueField(wireName: 'store')
+  String get store;
+
   static Serializer<Content> get serializer => _$contentSerializer;
 }

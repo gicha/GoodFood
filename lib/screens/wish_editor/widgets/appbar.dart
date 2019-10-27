@@ -29,7 +29,7 @@ class WishAppBarWidget extends StatelessWidget {
                       WishBloc.getInstance().dispatch(ClearWishEvent());
                       Navigator.pop(context);
                     },
-                    text: "Return?"),
+                    text: "Leave unsaved?"),
               );
             },
             child: Container(

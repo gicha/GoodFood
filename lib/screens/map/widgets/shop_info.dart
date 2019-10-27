@@ -4,8 +4,6 @@ import 'package:goodfood/generated/i18n.dart';
 import 'package:goodfood/models/models.dart';
 import 'package:goodfood/res/res.dart';
 import 'package:goodfood/res/text_style.dart';
-import 'package:goodfood/screens/map/widgets/product.dart';
-import 'package:badges/badges.dart';
 import 'package:goodfood/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';

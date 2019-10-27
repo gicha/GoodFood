@@ -30,6 +30,12 @@ class _$ContentSerializer implements StructuredSerializer<Content> {
         ..add(serializers.serialize(object.count,
             specifiedType: const FullType(int)));
     }
+    if (object.store != null) {
+      result
+        ..add('store')
+        ..add(serializers.serialize(object.store,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
@@ -52,6 +58,10 @@ class _$ContentSerializer implements StructuredSerializer<Content> {
           result.count = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
+        case 'store':
+          result.store = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
       }
     }
 
@@ -64,11 +74,13 @@ class _$Content extends Content {
   final Product product;
   @override
   final int count;
+  @override
+  final String store;
 
   factory _$Content([void Function(ContentBuilder) updates]) =>
       (new ContentBuilder()..update(updates)).build();
 
-  _$Content._({this.product, this.count}) : super._();
+  _$Content._({this.product, this.count, this.store}) : super._();
 
   @override
   Content rebuild(void Function(ContentBuilder) updates) =>
@@ -80,19 +92,24 @@ class _$Content extends Content {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Content && product == other.product && count == other.count;
+    return other is Content &&
+        product == other.product &&
+        count == other.count &&
+        store == other.store;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, product.hashCode), count.hashCode));
+    return $jf(
+        $jc($jc($jc(0, product.hashCode), count.hashCode), store.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('Content')
           ..add('product', product)
-          ..add('count', count))
+          ..add('count', count)
+          ..add('store', store))
         .toString();
   }
 }
@@ -108,12 +125,17 @@ class ContentBuilder implements Builder<Content, ContentBuilder> {
   int get count => _$this._count;
   set count(int count) => _$this._count = count;
 
+  String _store;
+  String get store => _$this._store;
+  set store(String store) => _$this._store = store;
+
   ContentBuilder();
 
   ContentBuilder get _$this {
     if (_$v != null) {
       _product = _$v.product?.toBuilder();
       _count = _$v.count;
+      _store = _$v.store;
       _$v = null;
     }
     return this;
@@ -136,8 +158,9 @@ class ContentBuilder implements Builder<Content, ContentBuilder> {
   _$Content build() {
     _$Content _$result;
     try {
-      _$result =
-          _$v ?? new _$Content._(product: _product?.build(), count: count);
+      _$result = _$v ??
+          new _$Content._(
+              product: _product?.build(), count: count, store: store);
     } catch (_) {
       String _$failedField;
       try {

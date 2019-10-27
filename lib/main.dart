@@ -106,19 +106,21 @@ void startHome() async {
                                   title: Text(state.text),
                                   actions: <Widget>[
                                     FlatButton(
+                                      onPressed: () => Navigator.pop(context),
+                                      child: Text(
+                                        I18n.of(context).cancel,
+                                        style: ITTextStyle(color: Theme.of(context).primaryColor),
+                                      ),
+                                    ),
+                                    FlatButton(
                                       onPressed: () {
                                         state.confirm();
                                         Navigator.pop(context);
                                       },
                                       child: Text(
                                         I18n.of(context).confirm,
-                                        style: ITTextStyle(color: Theme.of(context).primaryColor),
                                       ),
                                     ),
-                                    FlatButton(
-                                      onPressed: () => Navigator.pop(context),
-                                      child: Text(I18n.of(context).cancel),
-                                    )
                                   ],
                                 );
                               });
